@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Student_Housing"
         mc:Ignorable="d"
-        Title="PwdResetScreen" Height="204.255" Width="404.255">
+        Title="PwdResetScreen" WindowStartupLocation="CenterScreen" WindowStyle="None" Height="204.255" Width="404.255">
     <Grid>
         <Label x:Name="lblPwdEmail" Content="Email address" ToolTip="Please enter your email address" HorizontalAlignment="Left" Margin="33,57,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbxPwdEmailAddr" HorizontalAlignment="Left" Height="23" Margin="136,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223"/>

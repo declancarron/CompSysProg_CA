@@ -18,9 +18,9 @@ namespace Student_Housing
     /// <summary>
     /// Interaction logic for residentPage.xaml
     /// </summary>
-    public partial class residentPage : Page
+    public partial class PageResident : Page
     {
-        public residentPage()
+        public PageResident()
         {
             InitializeComponent();
         }

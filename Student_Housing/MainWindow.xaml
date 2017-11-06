@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Student_Housing"
         mc:Ignorable="d"
-        Title="Student Housing Logon" Height="435.638" Width="735.993">
+        Title="Student Housing Logon" WindowStartupLocation="CenterScreen" WindowStyle="None" Height="435.638" Width="735.993">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="47*"/>

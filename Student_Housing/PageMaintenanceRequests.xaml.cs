@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace Student_Housing
 {
     /// <summary>
-    /// Interaction logic for applicantPage.xaml
+    /// Interaction logic for MaintenanceRequests.xaml
     /// </summary>
-    public partial class applicantPage : Page
+    public partial class PageMaintenanceRequests : Page
     {
-        public applicantPage()
+        public PageMaintenanceRequests()
         {
             InitializeComponent();
+        }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
         }
     }
 }

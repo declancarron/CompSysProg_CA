@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Student_Housing
 {
     /// <summary>
-    /// Interaction logic for notificationPage.xaml
+    /// Interaction logic for applicantPage.xaml
     /// </summary>
-    public partial class notificationPage : Page
+    public partial class PageApplicant : Page
     {
-        public notificationPage()
+        public PageApplicant()
         {
             InitializeComponent();
         }

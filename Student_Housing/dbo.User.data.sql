@@ -1,0 +1,8 @@
+﻿INSERT INTO [dbo].[User] ([UserID], [UName], [Forename], [Surname], [Password], [AccessLevel], [Email]) VALUES (N'10000', N'rjackman', N'Robin', N'Jackman', N'river123', 1, N'r.jackman@example.com')
+INSERT INTO [dbo].[User] ([UserID], [UName], [Forename], [Surname], [Password], [AccessLevel], [Email]) VALUES (N'10001', N'tedwards', N'Taylor', N'Edwards', N'blue1234', 2, N't.edwards@example.com')
+INSERT INTO [dbo].[User] ([UserID], [UName], [Forename], [Surname], [Password], [AccessLevel], [Email]) VALUES (N'10002', N'vdickens', N'Vivian', N'Dickens', N'green123', 1, N'v.dickens@example.com')
+INSERT INTO [dbo].[User] ([UserID], [UName], [Forename], [Surname], [Password], [AccessLevel], [Email]) VALUES (N'10003', N'hclifford', N'Harry', N'Clifford', N'pa$$w0rd', 2, N'h.clifford@example.com')
+INSERT INTO [dbo].[User] ([UserID], [UName], [Forename], [Surname], [Password], [AccessLevel], [Email]) VALUES (N'10004', N'eclifford', N'Eliza', N'Clifford', N'river123', 2, N'e.clifford@example.com')
+INSERT INTO [dbo].[User] ([UserID], [UName], [Forename], [Surname], [Password], [AccessLevel], [Email]) VALUES (N'10005', N'nnewman', N'Nancy', N'Newman', N'blue1234', 1, N'n.newman@example.com')
+INSERT INTO [dbo].[User] ([UserID], [UName], [Forename], [Surname], [Password], [AccessLevel], [Email]) VALUES (N'10006', N'mclifford', N'Melinda', N'Clifford', N'green123', 2, N'm.clifford@example.com')
+INSERT INTO [dbo].[User] ([UserID], [UName], [Forename], [Surname], [Password], [AccessLevel], [Email]) VALUES (N'10007', N'hgilbert', N'Harley', N'Gilbert', N'pa$$w0rd', 1, N'h.gilbert@example.com')

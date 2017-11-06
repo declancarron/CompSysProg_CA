@@ -54,32 +54,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Apartment.xaml.cs">
-      <DependentUpon>Apartment.xaml</DependentUpon>
+    <Compile Include="PageApartment.xaml.cs">
+      <DependentUpon>PageApartment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Applicants.xaml.cs">
-      <DependentUpon>Applicants.xaml</DependentUpon>
+    <Compile Include="PageApplicant.xaml.cs">
+      <DependentUpon>PageApplicant.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include=".xaml.cs">
-      <DependentUpon>Maintenance Requests.xaml</DependentUpon>
+    <Compile Include="PageMaintenanceRequests.xaml.cs">
+      <DependentUpon>PageMaintenanceRequests.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User Notifications.xaml.cs">
-      <DependentUpon>User Notifications.xaml</DependentUpon>
+    <Compile Include="PageProfile.xaml.cs">
+      <DependentUpon>PageProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageSettings.xaml.cs">
+      <DependentUpon>PageSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PageNotifications.xaml.cs">
+      <DependentUpon>PageNotifications.xaml</DependentUpon>
     </Compile>
     <Compile Include="PwdResetScreen.xaml.cs">
       <DependentUpon>PwdResetScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Resident.xaml.cs">
-      <DependentUpon>Resident.xaml</DependentUpon>
+    <Compile Include="PageResident.xaml.cs">
+      <DependentUpon>PageResident.xaml</DependentUpon>
     </Compile>
-    <Page Include="Apartment.xaml">
+    <Page Include="PageApartment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Applicants.xaml">
+    <Page Include="PageApplicant.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,7 +93,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Maintenance Requests.xaml">
+    <Page Include="PageMaintenanceRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,7 +113,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="User Notifications.xaml">
+    <Page Include="PageProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PageNotifications.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -115,7 +129,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resident.xaml">
+    <Page Include="PageResident.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
