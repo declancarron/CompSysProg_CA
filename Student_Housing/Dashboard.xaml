@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Student_Housing"
         mc:Ignorable="d"
-        Title="LYIT Student Services" WindowStartupLocation="CenterScreen" Height="509.574" Width="725.532">
+        Title="LYIT Student Services" WindowStartupLocation="CenterScreen"
+        WindowState="Maximized" Height="509.574" Width="725.532" Loaded="Window_Loaded" >
     <Grid>
         <!--dividing the main window into three rows-->
         <Grid.RowDefinitions>
@@ -29,19 +30,19 @@
                     <ColumnDefinition Width="201*"/>
                 </Grid.ColumnDefinitions>
                 <!--Frame to present the various user page content in-->
-                <Frame x:Name="dashContentFrame" Content="Frame" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,1" Width="583"/>
+                <Frame x:Name="dashContentFrame" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,1" Width="583"/>
                 <!--dockpanel for the main navigation buttons -->
                 <DockPanel HorizontalAlignment="Left" Height="339" LastChildFill="False" VerticalAlignment="Top" Width="114">
                     <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Height="203" VerticalAlignment="Top" Width="100" Margin="7,0">
                         <Button x:Name="btnNotification" Visibility="Visible" Content="Notifications" Height="40" Click="btnClickNotification"/>
-                        <Button x:Name="btnApartment" Visibility="Visible" Content="Apartment" Height="40" Click="btnClickApartment"/>
-                        <Button x:Name="btnApplicant" Visibility="Visible" Content="Applicant" Height="40" Click="btnClickApplicant"/>
-                        <Button x:Name="btnResident" Visibility="Visible" Content="Resident" Height="40" Click="btnClickResident"/>
-                        <Button x:Name="btnMaintenance" Visibility="Visible" Content="Maintenance" Height="40" Click="btnClickMaintenance"/>
+                        <Button x:Name="btnApartment" Visibility="Collapsed" Content="Apartments" Height="40" Click="btnClickApartment"/>
+                        <Button x:Name="btnApplicant" Visibility="Collapsed" Content="Applications" Height="40" Click="btnClickApplicant"/>
+                        <Button x:Name="btnResident" Visibility="Collapsed" Content="Resident" Height="40" Click="btnClickResident"/>
+                        <Button x:Name="btnMaintenance" Visibility="Collapsed" Content="Maintenance Request" Height="40" Click="btnClickMaintenance"/>
 
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Bottom" Height="83" VerticalAlignment="Top" Width="100" Margin="7,0">
-                        <Button x:Name="btnSettings" Visibility="Visible" Content="Settings" Height="40" Click="btnClickSettings"/>
+                        <Button x:Name="btnSettings" Visibility="Hidden" Content="Settings" Height="40" Click="btnClickSettings"/>
                         <Button x:Name="btnProfile" Visibility="Visible" Content="Profile" Height="40" Click="btnClickProfile"/>
 
                     </StackPanel>

@@ -19,9 +19,62 @@ namespace Student_Housing
     /// </summary>
     public partial class Dashboard : Window
     {
+        public User currentUser;
+
         public Dashboard()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            mtdShowButtons(currentUser.AccessLevel);
+        }
+
+        private void mtdShowButtons(int accessLevel)
+        {
+            //user-Applicant
+            //buttons visible, Notifications, Apartment, Applicant, Profile
+            if (accessLevel == 1)
+            {
+                btnNotification.Visibility = Visibility.Visible;
+                btnApartment.Visibility = Visibility.Visible;
+                btnApplicant.Visibility = Visibility.Visible;
+                btnProfile.Visibility = Visibility.Visible;
+            }
+
+            //user-Resident
+            //buttons visible, Notifications, Apartment, Resident, Profile
+            if (accessLevel == 2)
+            {
+                btnNotification.Visibility = Visibility.Visible;
+                btnApartment.Visibility = Visibility.Visible;
+                btnResident.Visibility = Visibility.Visible;
+                btnProfile.Visibility = Visibility.Visible;
+            }
+
+            //user-Maintenance
+            //buttons visible, Notifications, Maintenance, and Profile
+            if (accessLevel == 3)
+            {
+                btnNotification.Visibility = Visibility.Visible;
+                btnMaintenance.Visibility = Visibility.Visible;
+                btnProfile.Visibility = Visibility.Visible;
+            }
+
+            //user-Administrator
+            //buttons visible, Notifications, Apartment, Applicant,Resident,Maintenance,Settings and Profile
+            if (accessLevel == 4)
+            {
+                btnNotification.Visibility = Visibility.Visible;
+                btnApartment.Visibility = Visibility.Visible;
+                btnApplicant.Visibility = Visibility.Visible;
+                btnResident.Visibility = Visibility.Visible;
+                btnMaintenance.Visibility = Visibility.Visible;
+                btnSettings.Visibility = Visibility.Visible;
+                btnProfile.Visibility = Visibility.Visible;
+
+            }
         }
 
         private void btnClickApartment(object sender, RoutedEventArgs e)
@@ -65,5 +118,6 @@ namespace Student_Housing
             PageProfile profile = new PageProfile();
             dashContentFrame.Navigate(profile);
         }
+
     }
 }
