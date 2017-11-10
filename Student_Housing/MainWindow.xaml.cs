@@ -108,5 +108,9 @@ namespace Student_Housing
             LoadUsers();
         }
 
+        private void btnNewUser_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

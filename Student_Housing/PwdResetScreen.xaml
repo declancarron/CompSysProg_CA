@@ -9,8 +9,8 @@
     <Grid>
         <Label x:Name="lblPwdEmail" Content="Email address" ToolTip="Please enter your email address" HorizontalAlignment="Left" Margin="33,57,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="tbxPwdEmailAddr" HorizontalAlignment="Left" Height="23" Margin="136,57,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223"/>
-        <Button x:Name="btnPwdResetSubmit" Content="Submit" HorizontalAlignment="Left" Margin="199,112,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnPwdResetCancel" Content="Cancel" HorizontalAlignment="Left" Margin="284,112,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnPwdResetSubmit" Content="Submit" HorizontalAlignment="Left" Margin="199,112,0,0" VerticalAlignment="Top" Width="75" Click="btnPwdResetSubmit_Click"/>
+        <Button x:Name="btnPwdResetCancel" Content="Cancel" HorizontalAlignment="Left" Margin="284,112,0,0" VerticalAlignment="Top" Width="75" Click="btnPwdResetCancel_Click"/>
         <Label x:Name="lblPwdResetHeader" Content="Enter Your Email Address to retrieve your Password" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
