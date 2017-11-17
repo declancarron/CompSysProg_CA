@@ -24,5 +24,20 @@ namespace Student_Housing
         {
             InitializeComponent();
         }
+
+        private void lstMaintenanceList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lstUsersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lstBuildingsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

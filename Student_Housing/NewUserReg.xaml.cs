@@ -48,13 +48,13 @@ namespace Student_Housing
             string country = "";
             string DOB = "";
             string courseOfStudy="";
-            string courseDepartment = "";
-            string yearOfStudy = "";
+            //string courseDepartment = "";
+            //string yearOfStudy = "";
             string nationality = "";
             string parentName = "";
             string parentsEmail = "";
             string parentsTele = "";
-            string RoomPreference = "";
+            //string RoomPreference = "";
 
             fname = tbxFName.Text.Trim();
             sname = tbxSName.Text.Trim();
@@ -81,7 +81,7 @@ namespace Student_Housing
         private void cboGender_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int genderSelected = cboGender.SelectedIndex;
-            string genderSelection = "";
+            //string genderSelection = "";
             
         }
 
@@ -89,7 +89,7 @@ namespace Student_Housing
         {
             int marriedStatus = cboMarriedStatus.SelectedIndex;
             
-            string marriedStatusSelection = "";
+            //string marriedStatusSelection = "";
             
             
         }
@@ -97,19 +97,19 @@ namespace Student_Housing
         private void cboDept_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int deptChoice = cboDept.SelectedIndex;
-            string deptSelection = "";
+            //string deptSelection = "";
         }
 
         private void cboCourseYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int yearOfCourse = cboCourseYear.SelectedIndex;
-            string yearOfStudySelection = "";
+            //string yearOfStudySelection = "";
         }
 
         private void cboRoomType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int roomChoice = cboRoomType.SelectedIndex;
-            string rmPreferenceSelection = "";
+            //string rmPreferenceSelection = "";
         }
     }
 }

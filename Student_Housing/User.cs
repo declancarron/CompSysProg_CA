@@ -12,7 +12,7 @@ namespace Student_Housing
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Users
     {
         public string UserID { get; set; }
         public string UName { get; set; }

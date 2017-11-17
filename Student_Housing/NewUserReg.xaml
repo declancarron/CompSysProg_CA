@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Student_Housing"
         mc:Ignorable="d"
-        Title="NewUserReg" Height="889.363" Width="461.702">
+        Title="" Height="893.363" Width="461.702" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Margin="0,0,0,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="179*"/>
             <ColumnDefinition Width="193*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="43*"/>
-            <RowDefinition Height="664*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="660*"/>
             <RowDefinition Height="98*"/>
-            <RowDefinition Height="51*"/>
+            <RowDefinition Height="93*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="lblHeader" Content="Label" HorizontalAlignment="Left" Margin="24,6,0,13" VerticalAlignment="Center" Height="24" Width="38" />
+        <Label x:Name="lblHeader" Content="New User Regristration" HorizontalAlignment="Left" Margin="24,4,0,4" VerticalAlignment="Center" Height="24" Width="133" />
         <Label x:Name="lblFName" Content="Forename" HorizontalAlignment="Left" Margin="24,0,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="63"/>
         <Label x:Name="lblSName" Content="Surname" HorizontalAlignment="Left" Margin="24,25,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="57"/>
         <Label x:Name="lblMobile" Content="Mobile No." HorizontalAlignment="Left" Margin="24,51,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="69"/>

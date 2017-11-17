@@ -23,14 +23,6 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,0">
             
             <!-- Combobox will provide normal users with display options that they have submitted-->
-            <ComboBox x:Name="cboTicketSelection" HorizontalAlignment="Left" Margin="15,8,50,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" SelectionChanged="cboTicketSelection_SelectionChanged" >
-                <ComboBoxItem Content="Please Select Option"/>
-                <ComboBoxItem Content="All Tickets"/>
-                <ComboBoxItem Content="Open Tickets"/>
-                <ComboBoxItem Content="Closed Tickets"/>
-                <ComboBoxItem Content="My Open Tickets"/>
-                <ComboBoxItem Content="My Closed Tickets"/>
-            </ComboBox>
 
             <!--Items visible to only the Maintenance and Admin-->
             <Label x:Name="lblSearch" Content="Search by Ticket Number: " Visibility="Visible" HorizontalAlignment="Center" Margin="23,8,0,8"  VerticalAlignment="Center" FontSize="10"/>

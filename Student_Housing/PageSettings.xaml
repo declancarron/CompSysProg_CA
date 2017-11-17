@@ -5,10 +5,285 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Student_Housing"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="450" d:DesignWidth="570.212"
       Title="settingsPage">
 
     <Grid>
-        <TextBlock Text="Settings Page" />
+        <TextBlock Text="Settings Page" Margin="0,-3,0,0" />
+        <TabControl HorizontalAlignment="Left" Height="430" Margin="0,20,0,0" VerticalAlignment="Top" Width="570">
+
+            <!--User tab-->
+            <TabItem Header="Users">
+
+                <!--Grid for the Buildings tab Content Layout-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="125*"/>
+                        <ColumnDefinition Width="439*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Dividing the page into two sections one section to hold the list view 
+                    the second section for the update, modify actions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="lstUsersList" SelectionChanged="lstUsersList_SelectionChanged"  HorizontalAlignment="Left" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525" Grid.ColumnSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Forename" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Forename}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Surname" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Surname}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Username" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding UName}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Password" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Password}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Access Level" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding AccessLevel}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DockPanel x:Name="dockUserPanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="497" Grid.ColumnSpan="2"  >
+                        <Grid Height="171" VerticalAlignment="Top" Width="507">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="60*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="tbkForename" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="22" Width="200"/>
+                            <TextBox x:Name="tbkSurname" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkUName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkPassord" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkAccessLevel" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <Label  x:Name="lblForename" Content="Forename" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Center"/>
+                            <Label  x:Name="lblSurname" Content="Surname" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+                            <Label x:Name="lblUName" Content="Username" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+                            <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" VerticalAlignment="Center"/>
+                            <Label x:Name="lblAccesLevel" Content="Access Level" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+                            <DockPanel Grid.Column="1" HorizontalAlignment="Left" Height="29" LastChildFill="False" Grid.Row="5" VerticalAlignment="Top" Width="304">
+                                <Button x:Name="btnCancel" Content="Cancel" Height="20" VerticalAlignment="Center" Width="75" Margin="0,2,10,2"/>
+                                <Button x:Name="btnDelete" Content="Delete" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,10,2" Click="btnDelete_Click"/>
+                                <Button x:Name="btnUpdate" Content="Update" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,0,2" Click="btnUpdate_Click"/>
+                            </DockPanel>
+                        </Grid>
+
+                    </DockPanel>
+                    <Button x:Name="btAddUser" Content="+" HorizontalAlignment="Left" Margin="415.34,10,0,0" VerticalAlignment="Top" Width="19" Height="17" ToolTip="Click to add new User details" Click="btAddUser_Click" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+
+            <!--Buildings tab-->
+            <TabItem Header="Buildings">
+
+                <!--Grid for the Buildings tab Content Layout-->
+                <Grid>
+
+                    <!--Dividing the page into two sections one section to hold the list view 
+                    the second section for the update, modify actions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="lstBuildingsList" SelectionChanged="lstBuildingsList_SelectionChanged"  HorizontalAlignment="Left" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Forename" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Forename}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Surname" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Surname}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Username" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding UName}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Password" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Password}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Access Level" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding AccessLevel}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DockPanel x:Name="dockBuildingsPanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="497"  >
+                        <Grid Height="171" VerticalAlignment="Top" Width="507">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="60*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="tbkBuilding" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="22" Width="200"/>
+                            <TextBox x:Name="tbkBuildingSurname" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkBuildingUName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkBuildingPassord" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkBuildingAccessLevel" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <Label  x:Name="lblBuildingForename" Content="Forename" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Center"/>
+                            <Label  x:Name="lblBuildingSurname" Content="Surname" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+                            <Label x:Name="lblBuildingUName" Content="Username" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+                            <Label x:Name="lblBuildingPassword" Content="Password" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" VerticalAlignment="Center"/>
+                            <Label x:Name="lblBuildingAccesLevel" Content="Access Level" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+                            <DockPanel Grid.Column="1" HorizontalAlignment="Left" Height="29" LastChildFill="False" Grid.Row="5" VerticalAlignment="Top" Width="304">
+                                <Button x:Name="btnBuildingCancel" Content="Cancel" Height="20" VerticalAlignment="Center" Width="75" Margin="0,2,10,2"/>
+                                <Button x:Name="btnBuidingDelete" Content="Delete" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,10,2" Click="btnDelete_Click"/>
+                                <Button x:Name="btnBuildingUpdate" Content="Update" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,0,2" Click="btnUpdate_Click"/>
+                            </DockPanel>
+                        </Grid>
+
+                    </DockPanel>
+                    <Button x:Name="btAddBuilding" Content="+" HorizontalAlignment="Left" Margin="540,10,0,0" VerticalAlignment="Top" Width="19" Height="17" ToolTip="Click to add new User details" Click="btAddUser_Click"/>
+                </Grid>
+            </TabItem>
+
+            <!--Maintenance tab-->
+            <TabItem Header="Maintenance">
+
+                <!--Grid for the Maintenance tab Content Layout-->
+                <Grid>
+
+                    <!--Dividing the page into two sections one section to hold the list view 
+                    the second section for the update, modify actions-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40*"/>
+                        <RowDefinition Height="60*"/>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="lstMaintenanceList" SelectionChanged="lstMaintenanceList_SelectionChanged"  HorizontalAlignment="Left" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Forename" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Forename}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Surname" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Surname}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Username" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding UName}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Password" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Password}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Access Level" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding AccessLevel}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DockPanel x:Name="dockMaintenancePanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="497"  >
+                        <Grid Height="171" VerticalAlignment="Top" Width="507">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="60*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+                            </Grid.RowDefinitions>
+                            <TextBox x:Name="tbkMaintenanceForename" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="22" Width="200"/>
+                            <TextBox x:Name="tbkMaintenanceSurname" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkMaintenanceUName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkMaintenancePassord" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkMaintenanceAccessLevel" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <Label  x:Name="lblMaintenanceForename" Content="Forename" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Center"/>
+                            <Label  x:Name="lblMaintenanceSurname" Content="Surname" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+                            <Label x:Name="lblMaintenanceUName" Content="Username" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+                            <Label x:Name="lblMaintenancePassword" Content="Password" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" VerticalAlignment="Center"/>
+                            <Label x:Name="lblMaintenanceAccesLevel" Content="Access Level" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+                            <DockPanel Grid.Column="1" HorizontalAlignment="Left" Height="29" LastChildFill="False" Grid.Row="5" VerticalAlignment="Top" Width="304">
+                                <Button x:Name="btnMaintenanceCancel" Content="Cancel" Height="20" VerticalAlignment="Center" Width="75" Margin="0,2,10,2"/>
+                                <Button x:Name="btnMaintenanceDelete" Content="Delete" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,10,2" Click="btnDelete_Click"/>
+                                <Button x:Name="btnMaintenanceUpdate" Content="Update" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,0,2" Click="btnUpdate_Click"/>
+                            </DockPanel>
+                        </Grid>
+
+                    </DockPanel>
+                    <Button x:Name="btAddMaintenance" Content="+" HorizontalAlignment="Left" Margin="540,10,0,0" VerticalAlignment="Top" Width="19" Height="17" ToolTip="Click to add new User details" Click="btAddUser_Click"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
     </Grid>
 </Page>

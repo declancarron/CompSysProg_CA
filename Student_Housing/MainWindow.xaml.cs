@@ -23,7 +23,10 @@ namespace Student_Housing
         //Create a new instance of SQL database connection
         dcarronHousingEntities db = new dcarronHousingEntities();
         //Global list used to contain all users
-        List<User> userList = new List<User>();
+        List<Users> userList = new List<Users>();
+
+        private ObservableCollection<User> lstUserSummaryData = new ObservableCollection<User>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace Student_Housing
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User();
+            Users user = new Users();
             string username = txtStudentID.Text.Trim();
             //Password box is accessed using different commands to textbox
             string password = tbxPasswordBox.Password;
@@ -43,8 +46,9 @@ namespace Student_Housing
                 Dashboard dashboard = new Dashboard();
                 dashboard.Owner = this;
                 dashboard.currentUser = user;
-                dashboard.ShowDialog();
                 this.Hide();
+                dashboard.ShowDialog();
+                
             }
             else
             {
@@ -64,9 +68,9 @@ namespace Student_Housing
             this.Close();
         }
 
-        private User VerifyUserDetails(string username, string password)
+        private Users VerifyUserDetails(string username, string password)
         {
-            User verifiedUser = new User();
+            Users verifiedUser = new Users();
 
             foreach (var user in userList)
             {
@@ -111,6 +115,102 @@ namespace Student_Housing
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public class User
+        {
+            String UserID { get; set; }
+            String UName { get; set; }
+            String Forename { get; set; }
+            String Surname { get; set; }
+            String Password { get; set; }
+            String AccessType { get; set; }
+            String AccessLevel { get; set; }
+            String Email { get; set; }
+            String CountryCode { get; set; }
+            String  MobileNum { get; set; }
+            String Telephone { get; set; }
+        }
+
+        public class Building
+        {
+            String BuildingID { get; set; }
+            String BuildingName { get; set; }
+            String VillageID { get; set; }
+            String Description { get; set; }
+            DateTime DateSurveyed { get; set; }
+            DateTime NextSurveyDue { get; set; }
+        }
+
+        public class Village
+        {
+            String VillageID  { get; set; }
+            String Address1  { get; set; }
+            String Street  { get; set; }
+            String TownArea  { get; set; }
+            String PostCode  { get; set; }
+        }
+
+        public class Resident
+        {
+            String ResidentID { get; set; }
+            String UserID { get; set; }
+            String College { get; set; }
+            String Department { get; set; }
+            String MartialStatus { get; set; }
+            char  DepositPaid { get; set; }
+            float DepositAmount { get; set; }
+	        DateTime DepositPaymentDate { get; set; }
+            float RefundDue { get; set; }
+	        float RefundAmount { get; set; }
+	        DateTime RefundPaymnetDate { get; set; }
+	        DateTime RentDueDate { get; set; }
+	        String RentFrequency { get; set; }
+            float RentAmount { get; set; }
+            float LastRentPaid { get; set; }
+            float RentOverdue { get; set; }
+            float RentArrears { get; set; }
+        }
+        public class Apartment
+        {
+            String CategoryID { get; set; }
+            String BuildingID { get; set; }
+            char AirCon { get; set; }
+            String RoomType { get; set; }
+            String Furnished { get; set; }
+            char Dishwasher { get; set; }
+        }
+
+        public class Applicant
+        {
+            String ApplicantID { get; set; }
+            String UserID { get; set; }
+            String Forename { get; set; }
+            String Surname { get; set; }
+            String ApplicantsEmail { get; set; }
+            String MobileNum { get; set; }
+	        DateTime DOB { get; set; }
+	        String PPSNumber { get; set; }
+	        String Nationality { get; set; }
+            String CountryOfBirth { get; set; }
+            String Gender { get; set; }
+            String  MartialStatus { get; set; }
+            String ParentGardianName { get; set; }
+	        String ParentGardianEmail { get; set; }
+            String ParentGardianTelephone { get; set; }
+            String College { get; set; }
+            String Course { get; set; }
+            String CourseYear { get; set; }
+            String Department { get; set; }
+            String VillagePreference { get; set; }
+            String VillagePreference2 { get; set; }
+            String VillagePreference3 { get; set; }
+            String ApartmentCategoryPref1 { get; set; }
+            String ApartmentCategoryPref2 { get; set; }
+            String ApartmentCategoryPref3 { get; set; }
+            String ApplicationStatus { get; set; }
+	        String ApartmentOfferStatus { get; set; }
+	        String ApartmentRejectCount { get; set; }
         }
     }
 }
