@@ -50,6 +50,7 @@
                 </DockPanel>
             </Grid>
         </DockPanel>
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Margin="533,3,0,0" VerticalAlignment="Top" Width="75" Grid.Row="1" Click="btnExit_Click"/>
         <!-- <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="351" Margin="0,3,0,0" Grid.Row="2" VerticalAlignment="Bottom" Width="120"/>
         <Separator HorizontalAlignment="Left" Height="0" Margin="10,62,0,0" VerticalAlignment="Top" Width="698"/> -->
 

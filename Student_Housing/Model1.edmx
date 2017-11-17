@@ -181,6 +181,7 @@
           <Property Name="TotalRoomOccupancy" Type="Int32" />
           <Property Name="RoomAvailable" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="OccupancyType" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ApartmentCategories" Relationship="dcarronHousingModel.ApartmentApartmentCategory" FromRole="Apartment" ToRole="ApartmentCategory" />
         </EntityType>
         <EntityType Name="ApartmentCategory">
           <Key>
@@ -191,6 +192,8 @@
           <Property Name="RoomType" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Furnished" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Dishwasher" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Apartment" Relationship="dcarronHousingModel.ApartmentApartmentCategory" FromRole="ApartmentCategory" ToRole="Apartment" />
+          <Property Name="ApartmentApartmentID" Type="String" Nullable="true" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Applicant">
           <Key>
@@ -236,6 +239,7 @@
           <Property Name="DateSurveyed" Type="DateTime" Precision="3" />
           <Property Name="NextSurveyDue" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Village" Relationship="Self.FK_Building_To_Village" FromRole="Building" ToRole="Village" />
+          <NavigationProperty Name="Maintenances" Relationship="dcarronHousingModel.BuildingMaintenance" FromRole="Building" ToRole="Maintenance" />
         </EntityType>
         <EntityType Name="Maintenance">
           <Key>
@@ -251,6 +255,10 @@
           <Property Name="RequestCompletionDate" Type="DateTime" Precision="0" />
           <Property Name="EmployeeID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AssignedTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Building" Relationship="dcarronHousingModel.BuildingMaintenance" FromRole="Maintenance" ToRole="Building" />
+          <Property Name="BuildingBuildingID" Type="String" Nullable="true" MaxLength="36" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="dcarronHousingModel.MaintenanceUser" FromRole="Maintenance" ToRole="User" />
+          <Property Name="UserUserID" Type="String" Nullable="true" MaxLength="36" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Resident">
           <Key>
@@ -287,6 +295,7 @@
           <Property Name="CountryCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="MobileNum" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Telephone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Maintenances" Relationship="dcarronHousingModel.MaintenanceUser" FromRole="User" ToRole="Maintenance" />
         </EntityType>
         <EntityType Name="Village">
           <Key>
@@ -326,7 +335,55 @@
             <End Role="Village" EntitySet="Villages" />
             <End Role="Building" EntitySet="Buildings" />
           </AssociationSet>
+          <AssociationSet Name="BuildingMaintenance" Association="dcarronHousingModel.BuildingMaintenance">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Maintenance" EntitySet="Maintenances" />
+          </AssociationSet>
+          <AssociationSet Name="MaintenanceUser" Association="dcarronHousingModel.MaintenanceUser">
+            <End Role="Maintenance" EntitySet="Maintenances" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="ApartmentApartmentCategory" Association="dcarronHousingModel.ApartmentApartmentCategory">
+            <End Role="Apartment" EntitySet="Apartments" />
+            <End Role="ApartmentCategory" EntitySet="ApartmentCategories" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="BuildingMaintenance">
+          <End Type="dcarronHousingModel.Building" Role="Building" Multiplicity="0..1" />
+          <End Type="dcarronHousingModel.Maintenance" Role="Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="BuildingBuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MaintenanceUser">
+          <End Type="dcarronHousingModel.Maintenance" Role="Maintenance" Multiplicity="*" />
+          <End Type="dcarronHousingModel.User" Role="User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="UserUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApartmentApartmentCategory">
+          <End Type="dcarronHousingModel.Apartment" Role="Apartment" Multiplicity="0..1" />
+          <End Type="dcarronHousingModel.ApartmentCategory" Role="ApartmentCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Apartment">
+              <PropertyRef Name="ApartmentID" />
+            </Principal>
+            <Dependent Role="ApartmentCategory">
+              <PropertyRef Name="ApartmentApartmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

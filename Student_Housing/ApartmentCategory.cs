@@ -19,5 +19,8 @@ namespace Student_Housing
         public string RoomType { get; set; }
         public string Furnished { get; set; }
         public string Dishwasher { get; set; }
+        public string ApartmentApartmentID { get; set; }
+    
+        public virtual Apartment Apartment { get; set; }
     }
 }

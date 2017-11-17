@@ -12,8 +12,14 @@ namespace Student_Housing
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Maintenances = new HashSet<Maintenance>();
+        }
+    
         public string UserID { get; set; }
         public string UName { get; set; }
         public string Forename { get; set; }
@@ -25,5 +31,8 @@ namespace Student_Housing
         public string CountryCode { get; set; }
         public string MobileNum { get; set; }
         public string Telephone { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Maintenance> Maintenances { get; set; }
     }
 }

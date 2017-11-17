@@ -28,7 +28,7 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
-                    <ListView x:Name="lstUsersList" SelectionChanged="lstUsersList_SelectionChanged"  HorizontalAlignment="Left" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525" Grid.ColumnSpan="2">
+                    <ListView x:Name="lstUsersList" SelectionChanged="lstUsersList_SelectionChanged" ItemsSource="{Binding UserSummaryDataCollection}" HorizontalAlignment="Stretch" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525" Grid.ColumnSpan="2">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Forename" Width="100">
@@ -69,7 +69,8 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <DockPanel x:Name="dockUserPanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="497" Grid.ColumnSpan="2"  >
+                    <!--Dockpanel for displaying user details-->
+                    <DockPanel x:Name="dockUserPanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="497" Grid.ColumnSpan="2" Visibility="Visible" >
                         <Grid Height="171" VerticalAlignment="Top" Width="507">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40*"/>
@@ -87,7 +88,14 @@
                             <TextBox x:Name="tbkSurname" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="22"/>
                             <TextBox x:Name="tbkUName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
                             <TextBox x:Name="tbkPassord" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
-                            <TextBox x:Name="tbkAccessLevel" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            
+                            <!--Access Level Dropdown selection-->
+                            <ComboBox x:Name="cboxAccessLevel" Grid.Column="1" Margin="10,0,91,0" Grid.Row="4">
+                                <ComboBoxItem Content="Nornal User"/>
+                                <ComboBoxItem Content="Resident"/>
+                                <ComboBoxItem Content="Maintenance Staff"/>
+                                <ComboBoxItem Content="Administrator"/>
+                            </ComboBox>
                             <Label  x:Name="lblForename" Content="Forename" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Center"/>
                             <Label  x:Name="lblSurname" Content="Surname" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" VerticalAlignment="Center"/>
                             <Label x:Name="lblUName" Content="Username" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="2" VerticalAlignment="Center"/>
@@ -117,7 +125,7 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
-                    <ListView x:Name="lstBuildingsList" SelectionChanged="lstBuildingsList_SelectionChanged"  HorizontalAlignment="Left" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525">
+                    <ListView x:Name="lstBuildingsList" SelectionChanged="lstBuildingsList_SelectionChanged"  ItemsSource="{Binding BuildingSummaryDataCollection}" HorizontalAlignment="Stretch" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Forename" Width="100">
@@ -206,7 +214,7 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
-                    <ListView x:Name="lstMaintenanceList" SelectionChanged="lstMaintenanceList_SelectionChanged"  HorizontalAlignment="Left" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525">
+                    <ListView x:Name="lstMaintenanceList" SelectionChanged="lstMaintenanceList_SelectionChanged" ItemsSource="{Binding MaintenanceSummaryDataCollection}"  HorizontalAlignment="Stretch" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Forename" Width="100">

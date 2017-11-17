@@ -31,7 +31,7 @@ namespace Student_Housing
         public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<Maintenance> Maintenances { get; set; }
         public virtual DbSet<Resident> Residents { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Village> Villages { get; set; }
     }
 }

@@ -28,6 +28,8 @@ namespace Student_Housing
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //call the method show buttoms to display buttons
+            //based on the users acces level
             mtdShowButtons(currentUser.AccessLevel);
         }
 
@@ -79,45 +81,73 @@ namespace Student_Housing
 
         private void btnClickApartment(object sender, RoutedEventArgs e)
         {
+            //create a new instance of the Apartment Page
             PageApartment apartment = new PageApartment();
+
+            //load the apartment page into the frame dashContentFrame
             dashContentFrame.Navigate(apartment);
         }
 
         private void btnClickNotification(object sender, RoutedEventArgs e)
         {
+            //create a new instance of the Notification Page
             PageNotification notification  = new PageNotification();
+
+            //load the notifications page into the frame dashContentFrame
             dashContentFrame.Navigate(notification);
         }
 
         private void btnClickApplicant(object sender, RoutedEventArgs e)
         {
+            //create a new instance of the Applicant Page
             PageApplicant applicant = new PageApplicant();
+
+            //load the applicant page into the frame dashContentFrame
             dashContentFrame.Navigate(applicant);
         }
 
         private void btnClickResident(object sender, RoutedEventArgs e)
         {
+            //create a new instance of the Resident Page
             PageResident resident = new PageResident();
+
+            //load the resident page into the frame dashContentFrame
             dashContentFrame.Navigate(resident);
         }
 
         private void btnClickMaintenance(object sender, RoutedEventArgs e)
         {
-            PageMaintenanceRequests maintenance = new PageMaintenanceRequests();
-            dashContentFrame.Navigate(maintenance);
+            PageMaintenanceRequests _maintenancePg = new PageMaintenanceRequests();
+
+            //load the maintenance page into the frame dashContentFrame
+            dashContentFrame.Navigate(_maintenancePg);
         }
 
         private void btnClickSettings(object sender, RoutedEventArgs e)
         {
-            PageSettings settings = new PageSettings();
-            dashContentFrame.Navigate(settings);
+            //create a new instance of the Setting Page
+            PageSettings _settingsPg = new PageSettings();
+
+            //load the settings page into the frame dashContentFrame
+            dashContentFrame.Navigate(_settingsPg);
         }
 
         private void btnClickProfile(object sender, RoutedEventArgs e)
         {
-            PageProfile profile = new PageProfile();
-            dashContentFrame.Navigate(profile);
+            //create a new instance of the Profile Page
+            PageProfile _profilePg = new PageProfile();
+                
+            //load the profile page into the frame dashContentFrame
+            dashContentFrame.Navigate(_profilePg);
         }
 
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            //Close the application
+            this.Close();
+
+            //close all running applications
+            Environment.Exit(0);
+        }
     }
 }

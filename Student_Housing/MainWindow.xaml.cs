@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
 
 namespace Student_Housing
 {
@@ -22,19 +23,81 @@ namespace Student_Housing
     {
         //Create a new instance of SQL database connection
         dcarronHousingEntities db = new dcarronHousingEntities();
-        //Global list used to contain all users
-        List<Users> userList = new List<Users>();
+        
+        /// <summary>
+        /// User data ObservableCollection constructors
+        /// </summary>
+        private ObservableCollection<UserListData> _UserSummaryData = new ObservableCollection<UserListData>();
+        
+        public ObservableCollection<UserListData> UserSummaryDataCollection
+        { get { return _UserSummaryData; } }
 
-        private ObservableCollection<User> lstUserSummaryData = new ObservableCollection<User>();
+        public class UserListData
+        {
+            public string UserID { get; set; }
+            public string UName { get; set; }
+            public string Forename { get; set; }
+            public string Surname { get; set; }
+            public string Password { get; set; }
+            public int AccessLevel { get; set; }
+
+        }
+
+        /// <summary>
+        /// Building ObservableCollection constructors
+        /// </summary>
+        private ObservableCollection<BuildingListData> _BuildingSummaryData = new ObservableCollection<BuildingListData>();
+
+        public ObservableCollection<BuildingListData> BuildingSummaryDataCollection
+        { get { return _BuildingSummaryData; } }
+
+        public class BuildingListData
+        {
+            public String BuildingID { get; set; }
+            public String BuildingName { get; set; }
+            public String VillageID { get; set; }
+            public String Description { get; set; }
+            public DateTime DateSurveyed { get; set; }
+            public DateTime NextSurveyDue { get; set; }
+        }
+
+        /// User data ObservableCollection constructors
+        /// </summary>
+        private ObservableCollection<MaintenanceListData> _MaintenanceSummaryData = new ObservableCollection<MaintenanceListData>();
+
+        public ObservableCollection<MaintenanceListData> MaintenanceSummaryDataCollection
+        { get { return _MaintenanceSummaryData; } }
+
+        public class MaintenanceListData
+        {
+            public String RequestID { get; set; }
+            public String UserID { get; set; }
+            public String BuildingID { get; set; }
+            public String BuildingName { get; set; }
+            public String ProblemDescription { get; set; }
+            public DateTime SubmissionDate { get; set; }
+            public String RequestStatus { get; set; }
+            public DateTime RequestCompletionDate { get; set; }
+            public String EmployeeID { get; set; }
+            public String AssignedTo { get; set; }
+        }
+
+
+        //Global list used to contain all users
+        List<User> userList = new List<User>();
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+      
+        
+       
+
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Users user = new Users();
+            User user = new User();
             string username = txtStudentID.Text.Trim();
             //Password box is accessed using different commands to textbox
             string password = tbxPasswordBox.Password;
@@ -57,20 +120,45 @@ namespace Student_Housing
             }
         }
 
+        private void PopulateCollection()
+        {
+            foreach (var user in UserSummaryDataCollection)
+            {
+                _UserSummaryData.Add(new UserListData
+                {
+                    AccessLevel = 0;
+                                      
+                  
+                });
+            }
+
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
         {
+            // declaring a new instanace of the Password Reset screen
+            PwdResetScreen resetPassword = new PwdResetScreen();
+            resetPassword.Owner = this;
+            //hide the login dialog screen
+            this.Hide();
+            //show the password dialog box
+            resetPassword.ShowDialog();
 
         }
+    
+
+ 
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             //Close down application
             this.Close();
+
+            //close out all running applications
+            Environment.Exit(0);
         }
 
-        private Users VerifyUserDetails(string username, string password)
+        private User VerifyUserDetails(string username, string password)
         {
-            Users verifiedUser = new Users();
+            User verifiedUser = new User();
 
             foreach (var user in userList)
             {
@@ -117,100 +205,9 @@ namespace Student_Housing
 
         }
 
-        public class User
-        {
-            String UserID { get; set; }
-            String UName { get; set; }
-            String Forename { get; set; }
-            String Surname { get; set; }
-            String Password { get; set; }
-            String AccessType { get; set; }
-            String AccessLevel { get; set; }
-            String Email { get; set; }
-            String CountryCode { get; set; }
-            String  MobileNum { get; set; }
-            String Telephone { get; set; }
-        }
 
-        public class Building
-        {
-            String BuildingID { get; set; }
-            String BuildingName { get; set; }
-            String VillageID { get; set; }
-            String Description { get; set; }
-            DateTime DateSurveyed { get; set; }
-            DateTime NextSurveyDue { get; set; }
-        }
 
-        public class Village
-        {
-            String VillageID  { get; set; }
-            String Address1  { get; set; }
-            String Street  { get; set; }
-            String TownArea  { get; set; }
-            String PostCode  { get; set; }
-        }
-
-        public class Resident
-        {
-            String ResidentID { get; set; }
-            String UserID { get; set; }
-            String College { get; set; }
-            String Department { get; set; }
-            String MartialStatus { get; set; }
-            char  DepositPaid { get; set; }
-            float DepositAmount { get; set; }
-	        DateTime DepositPaymentDate { get; set; }
-            float RefundDue { get; set; }
-	        float RefundAmount { get; set; }
-	        DateTime RefundPaymnetDate { get; set; }
-	        DateTime RentDueDate { get; set; }
-	        String RentFrequency { get; set; }
-            float RentAmount { get; set; }
-            float LastRentPaid { get; set; }
-            float RentOverdue { get; set; }
-            float RentArrears { get; set; }
-        }
-        public class Apartment
-        {
-            String CategoryID { get; set; }
-            String BuildingID { get; set; }
-            char AirCon { get; set; }
-            String RoomType { get; set; }
-            String Furnished { get; set; }
-            char Dishwasher { get; set; }
-        }
-
-        public class Applicant
-        {
-            String ApplicantID { get; set; }
-            String UserID { get; set; }
-            String Forename { get; set; }
-            String Surname { get; set; }
-            String ApplicantsEmail { get; set; }
-            String MobileNum { get; set; }
-	        DateTime DOB { get; set; }
-	        String PPSNumber { get; set; }
-	        String Nationality { get; set; }
-            String CountryOfBirth { get; set; }
-            String Gender { get; set; }
-            String  MartialStatus { get; set; }
-            String ParentGardianName { get; set; }
-	        String ParentGardianEmail { get; set; }
-            String ParentGardianTelephone { get; set; }
-            String College { get; set; }
-            String Course { get; set; }
-            String CourseYear { get; set; }
-            String Department { get; set; }
-            String VillagePreference { get; set; }
-            String VillagePreference2 { get; set; }
-            String VillagePreference3 { get; set; }
-            String ApartmentCategoryPref1 { get; set; }
-            String ApartmentCategoryPref2 { get; set; }
-            String ApartmentCategoryPref3 { get; set; }
-            String ApplicationStatus { get; set; }
-	        String ApartmentOfferStatus { get; set; }
-	        String ApartmentRejectCount { get; set; }
-        }
     }
+
+
 }

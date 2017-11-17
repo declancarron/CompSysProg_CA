@@ -24,5 +24,10 @@ namespace Student_Housing
         public Nullable<System.DateTime> RequestCompletionDate { get; set; }
         public string EmployeeID { get; set; }
         public string AssignedTo { get; set; }
+        public string BuildingBuildingID { get; set; }
+        public string UserUserID { get; set; }
+    
+        public virtual Building Building { get; set; }
+        public virtual User User { get; set; }
     }
 }
