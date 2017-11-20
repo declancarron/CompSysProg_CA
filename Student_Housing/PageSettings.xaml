@@ -4,13 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Student_Housing"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="570.212"
-      Title="settingsPage">
+      mc:Ignorable="d"
+      Title="settingsPage" Height="556" Width="850.212">
 
     <Grid>
         <TextBlock Text="Settings Page" Margin="0,-3,0,0" />
-        <TabControl HorizontalAlignment="Left" Height="430" Margin="0,20,0,0" VerticalAlignment="Top" Width="570">
+        <TabControl HorizontalAlignment="Left" Margin="0,20,0,0" Width="810">
 
             <!--User tab-->
             <TabItem Header="Users">
@@ -28,7 +27,7 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
-                    <ListView x:Name="lstUsersList" SelectionChanged="lstUsersList_SelectionChanged" ItemsSource="{Binding UserSummaryDataCollection}" HorizontalAlignment="Stretch" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525" Grid.ColumnSpan="2">
+                    <ListView x:Name="lstUsersList" SelectionChanged="lstUsersList_SelectionChanged" ItemsSource="{Binding UserSummaryDataCollection}" HorizontalAlignment="Stretch" Height="113" Margin="10,10,134,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Forename" Width="100">
@@ -88,7 +87,7 @@
                             <TextBox x:Name="tbkSurname" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="22"/>
                             <TextBox x:Name="tbkUName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
                             <TextBox x:Name="tbkPassord" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
-                            
+
                             <!--Access Level Dropdown selection-->
                             <ComboBox x:Name="cboxAccessLevel" Grid.Column="1" Margin="10,0,91,0" Grid.Row="4">
                                 <ComboBoxItem Content="Nornal User"/>
@@ -109,7 +108,6 @@
                         </Grid>
 
                     </DockPanel>
-                    <Button x:Name="btAddUser" Content="+" HorizontalAlignment="Left" Margin="415.34,10,0,0" VerticalAlignment="Top" Width="19" Height="17" ToolTip="Click to add new User details" Click="btAddUser_Click" Grid.Column="1"/>
                 </Grid>
             </TabItem>
 
@@ -125,7 +123,7 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
-                    <ListView x:Name="lstBuildingsList" SelectionChanged="lstBuildingsList_SelectionChanged"  ItemsSource="{Binding BuildingSummaryDataCollection}" HorizontalAlignment="Stretch" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525">
+                    <ListView x:Name="lstBuildingsList" SelectionChanged="lstBuildingsList_SelectionChanged"  ItemsSource="{Binding BuildingSummaryDataCollection}" HorizontalAlignment="Stretch" Height="113" Margin="10,10,134,0" VerticalAlignment="Top">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Forename" Width="100">
@@ -198,7 +196,6 @@
                         </Grid>
 
                     </DockPanel>
-                    <Button x:Name="btAddBuilding" Content="+" HorizontalAlignment="Left" Margin="540,10,0,0" VerticalAlignment="Top" Width="19" Height="17" ToolTip="Click to add new User details" Click="btAddUser_Click"/>
                 </Grid>
             </TabItem>
 
@@ -206,7 +203,7 @@
             <TabItem Header="Maintenance">
 
                 <!--Grid for the Maintenance tab Content Layout-->
-                <Grid>
+                <Grid Height="510" VerticalAlignment="Top" Margin="0,0,0,-2">
 
                     <!--Dividing the page into two sections one section to hold the list view 
                     the second section for the update, modify actions-->
@@ -214,49 +211,84 @@
                         <RowDefinition Height="40*"/>
                         <RowDefinition Height="60*"/>
                     </Grid.RowDefinitions>
-                    <ListView x:Name="lstMaintenanceList" SelectionChanged="lstMaintenanceList_SelectionChanged" ItemsSource="{Binding MaintenanceSummaryDataCollection}"  HorizontalAlignment="Stretch" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Width="525">
+                    <ListView x:Name="lstMaintenanceList" SelectionChanged="lstMaintenanceList_SelectionChanged" ItemsSource="{Binding MaintenanceSummaryDataCollection}"  HorizontalAlignment="Stretch" Height="113" Margin="10,10,10,0" VerticalAlignment="Top">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Forename" Width="100">
+                                <GridViewColumn Header="Request Ref." Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Forename}"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding RequestID}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Surname" Width="100">
+                                <GridViewColumn Header="Submitted by" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Surname}"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding UserID}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Username" Width="100">
+                                <GridViewColumn Header="Building ID" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding UName}"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding BuildingID}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Password" Width="100">
+                                <GridViewColumn Header="Building Name" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Password}"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding BuildingName}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="Access Level" Width="100">
+                                <GridViewColumn Header="Description" Width="100">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding AccessLevel}"></TextBlock>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding ProblemDescription}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Created On" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding SubmissionDate}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Status" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding RequestStatus}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Completed On" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding RequestCompletionDate}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Employee ID" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding EmployeeID}"></TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Tasked To" Width="100">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding AssignedTo}"></TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <DockPanel x:Name="dockMaintenancePanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="497"  >
-                        <Grid Height="171" VerticalAlignment="Top" Width="507">
+                    <DockPanel x:Name="dockMaintenancePanel" HorizontalAlignment="Left" LastChildFill="False" Margin="10,10,0,-85" Grid.Row="1" Width="495"  >
+                        <Grid Height="270" VerticalAlignment="Top" Width="507" Margin="0,0,0,-99">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40*"/>
                                 <ColumnDefinition Width="60*"/>
@@ -265,29 +297,40 @@
                                 <RowDefinition Height="16*" />
                                 <RowDefinition Height="16*" />
                                 <RowDefinition Height="16*" />
+                                <RowDefinition Height="42*" />
                                 <RowDefinition Height="16*" />
                                 <RowDefinition Height="16*" />
                                 <RowDefinition Height="16*" />
+                                <RowDefinition Height="16*" />
+
+
                             </Grid.RowDefinitions>
-                            <TextBox x:Name="tbkMaintenanceForename" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="22" Width="200"/>
-                            <TextBox x:Name="tbkMaintenanceSurname" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="22"/>
-                            <TextBox x:Name="tbkMaintenanceUName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
-                            <TextBox x:Name="tbkMaintenancePassord" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
-                            <TextBox x:Name="tbkMaintenanceAccessLevel" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
-                            <Label  x:Name="lblMaintenanceForename" Content="Forename" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Center"/>
-                            <Label  x:Name="lblMaintenanceSurname" Content="Surname" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" VerticalAlignment="Center"/>
-                            <Label x:Name="lblMaintenanceUName" Content="Username" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="2" VerticalAlignment="Center"/>
-                            <Label x:Name="lblMaintenancePassword" Content="Password" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" VerticalAlignment="Center"/>
-                            <Label x:Name="lblMaintenanceAccesLevel" Content="Access Level" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="4" VerticalAlignment="Center"/>
-                            <DockPanel Grid.Column="1" HorizontalAlignment="Left" Height="29" LastChildFill="False" Grid.Row="5" VerticalAlignment="Top" Width="304">
-                                <Button x:Name="btnMaintenanceCancel" Content="Cancel" Height="20" VerticalAlignment="Center" Width="75" Margin="0,2,10,2"/>
-                                <Button x:Name="btnMaintenanceDelete" Content="Delete" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,10,2" Click="btnDelete_Click"/>
+                            <TextBox x:Name="tbkMaintenanceUserID" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="22" Width="200"/>
+                            <TextBox x:Name="tbkMaintenanceBuildingID" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkMaintenanceBuildingName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <TextBox x:Name="tbkMaintenanceDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="269" Height="69"/>
+                            <TextBox x:Name="tbkMaintenanceAssignedTo" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
+                            <ComboBox x:Name="cboRequestStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="5" Width="200" Height="22">
+                                <ComboBoxItem Content="Request Status"/>
+                                <ComboBoxItem Content="Completed"/>
+                                <ComboBoxItem Content="Work In Progress"/>
+                                <ComboBoxItem Content="Awaiting Part"/>
+                            </ComboBox>
+                            <Label  x:Name="lblMaintenanceUserID" Content="Submitted By" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Center"/>
+                            <Label  x:Name="lblMaintenanceBuildingID" Content="Building ID" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="1" VerticalAlignment="Center"/>
+                            <Label x:Name="lblMaintenanceBuildingName" Content="Building Name" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+                            <Label x:Name="lblMaintenanceDescription" Content="Description" HorizontalAlignment="Left" Margin="5,10,0,38" Grid.Row="3" VerticalAlignment="Center"/>
+                            <Label x:Name="lblMaintenanceAssignedTo" Content="Assigned To" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+                            <Label x:Name="lblMaintenanceStatus" Content="Request Status" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="5" VerticalAlignment="Center"/>
+                            <Label x:Name="lblMaintenanceCompletionDueDate" Content="Request Due Date" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="6" VerticalAlignment="Center"/>
+                            <DockPanel Grid.Column="1" HorizontalAlignment="Left" Height="29" LastChildFill="False" Grid.Row="7" VerticalAlignment="Top" Width="304">
+                                <Button x:Name="btnMaintenanceCancel" Content="Cancel" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,10,2"/>
+                                
                                 <Button x:Name="btnMaintenanceUpdate" Content="Update" Height="20" VerticalAlignment="Center" Width="75" Margin="10,2,0,2" Click="btnUpdate_Click"/>
                             </DockPanel>
                         </Grid>
 
                     </DockPanel>
-                    <Button x:Name="btAddMaintenance" Content="+" HorizontalAlignment="Left" Margin="540,10,0,0" VerticalAlignment="Top" Width="19" Height="17" ToolTip="Click to add new User details" Click="btAddUser_Click"/>
                 </Grid>
             </TabItem>
 

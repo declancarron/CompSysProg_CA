@@ -21,9 +21,21 @@ namespace Student_Housing
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
+
         //Create a new instance of SQL database connection
         dcarronHousingEntities db = new dcarronHousingEntities();
-        
+
+        //Global list used to contain all users
+        List<User> userList = new List<User>();
+
+        //Global list used to contain all buildings
+        List<Building> buildingList = new List<Building>();
+
+        //Global list used to contain all Maintenance Requests
+        List<Maintenance> maintenanceList = new List<Maintenance>();
+
         /// <summary>
         /// User data ObservableCollection constructors
         /// </summary>
@@ -84,16 +96,12 @@ namespace Student_Housing
 
 
         //Global list used to contain all users
-        List<User> userList = new List<User>();
-
+        
         public MainWindow()
         {
             InitializeComponent();
         }
 
-      
-        
-       
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -175,10 +183,14 @@ namespace Student_Housing
             return verifiedUser;
         }
 
+        /// <summary>
+        /// load the users deatilas from the Users database
+        /// </summary>
         private void LoadUsers()
         {
            try
            {
+              // clear the users list
               userList.Clear();
 
               foreach (var user in db.Users)
@@ -193,11 +205,59 @@ namespace Student_Housing
 
         }
 
+        /// <summary>
+        /// load building details from the buildings database
+        /// </summary>
+        private void LoadBuildings()
+        {
+            try
+            {
+                //clear the building list 
+                buildingList.Clear();
+
+                // loop through the buildings database
+                foreach (var building in db.Buildings)
+                {
+                    buildingList.Add(building);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database " + ex.InnerException);
+            }
+
+        }
+
+        /// <summary>
+        /// load the maintenance request  details from the maintenance database
+        /// </summary>
+        private void LoadMaintenanceReqs()
+        {
+            try
+            {
+                //clear the maintenance list
+                maintenanceList.Clear();
+
+                //loop through the maintenance database
+                foreach (var maintenanceReq in db.Maintenances)
+                {
+                    maintenanceList.Add(maintenanceReq);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connecting to database " + ex.InnerException);
+            }
+
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
         
             //do this first before any user interaction is allowed with this window
             LoadUsers();
+            LoadBuildings();
+            LoadMaintenanceReqs();
         }
 
         private void btnNewUser_Click(object sender, RoutedEventArgs e)
