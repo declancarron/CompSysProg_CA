@@ -17,6 +17,7 @@ namespace Student_Housing
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Building()
         {
+            this.Apartments = new HashSet<Apartment>();
             this.Maintenances = new HashSet<Maintenance>();
         }
     
@@ -26,7 +27,10 @@ namespace Student_Housing
         public string Description { get; set; }
         public Nullable<System.DateTime> DateSurveyed { get; set; }
         public Nullable<System.DateTime> NextSurveyDue { get; set; }
+        public string VillageName { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Apartment> Apartments { get; set; }
         public virtual Village Village { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Maintenance> Maintenances { get; set; }

@@ -42,5 +42,7 @@ namespace Student_Housing
         public string ApplicationStatus { get; set; }
         public string ApartmentOfferStatus { get; set; }
         public string ApartmentRejectCount { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

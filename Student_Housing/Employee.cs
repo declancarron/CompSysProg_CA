@@ -12,26 +12,25 @@ namespace Student_Housing
     using System;
     using System.Collections.Generic;
     
-    public partial class Village
+    public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Village()
+        public Employee()
         {
-            this.Apartments = new HashSet<Apartment>();
-            this.Buildings = new HashSet<Building>();
+            this.Maintenances = new HashSet<Maintenance>();
         }
     
-        public string VillageID { get; set; }
-        public string VillageName { get; set; }
-        public string Description { get; set; }
-        public string Address1 { get; set; }
-        public string Street { get; set; }
-        public string TownArea { get; set; }
-        public string PostCode { get; set; }
+        public string EmployeeID { get; set; }
+        public string Forename { get; set; }
+        public string Surname { get; set; }
+        public string JobTitle { get; set; }
+        public string Grade { get; set; }
+        public string Department { get; set; }
+        public string JobStatus { get; set; }
+        public string MobileNum { get; set; }
+        public string Telephone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Apartment> Apartments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Building> Buildings { get; set; }
+        public virtual ICollection<Maintenance> Maintenances { get; set; }
     }
 }

@@ -5,10 +5,122 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Student_Housing"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="apartmentPage">
+      d:DesignHeight="600" d:DesignWidth="600"
+      Title="apartmentPage" Height="600" Width="850.212">
 
     <Grid>
-        <TextBlock Text="Apartment Information" />
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="125*"/>
+                <ColumnDefinition Width="439*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Dividing the page into two sections one section to hold the list view 
+                    the second section for the update, modify actions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="60*"/>
+            </Grid.RowDefinitions>
+            <ListView x:Name="lstApartmentList" ItemsSource="{Binding ApartmentSummaryDataCollection}" 
+                  HorizontalAlignment="Stretch" Height="113" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" SelectionChanged="lstApartmentList_SelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Village Name" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding VillageID}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Building Name" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding BuildingName}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Apartment No." Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding ApartmentNumber}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Address" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Address}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Town" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Town}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Room Type" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding RoomType}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="AirCon" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding AirCon}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Furnished" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Furnished}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Dishwasher" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock TextWrapping="Wrap" HorizontalAlignment="Stretch" Text="{Binding Dishwasher}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <!--Dockpanel for displaying Apartment details-->
+            <DockPanel x:Name="dockApartmentPanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="497" Grid.ColumnSpan="2" Visibility="Visible">
+                <Grid Height="171" VerticalAlignment="Top" Width="507">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="16*" />
+                        <RowDefinition Height="16*" />
+                        <RowDefinition Height="16*" />
+                        <RowDefinition Height="16*" />
+                        <RowDefinition Height="16*" />
+                        <RowDefinition Height="16*" />
+                    </Grid.RowDefinitions>
+                    
+                    
+                </Grid>
+            </DockPanel>
+            <ComboBox x:Name="cboApartmentVillage" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="52,10,0,0" VerticalAlignment="Top" Width="159" SelectionChanged="ApartmentVillageCombox_SelectionChanged" >
+                <ComboBoxItem Content="Select Village"/>
+                <ComboBoxItem Content="1. Grand Central"/>
+                <ComboBoxItem Content="2. Ballyraine Halls"/>
+                <ComboBoxItem Content="3. Port Road Apartments"/>
+            </ComboBox>
+            <Label x:Name="lblApartmentComboboxHelp" Content="Please Select Village to view available apartments" Grid.Column="1" HorizontalAlignment="Left" Margin="58,10,0,0" VerticalAlignment="Top" Width="300" Height="23"/>
+
+
+
+        </Grid>
     </Grid>
 </Page>

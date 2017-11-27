@@ -25,7 +25,7 @@ namespace Student_Housing
 
 
         //Create a new instance of SQL database connection
-        dcarronHousingEntities db = new dcarronHousingEntities();
+        dcarronHousingEntities2 db = new dcarronHousingEntities2();
 
         //Global list used to contain all users
         List<User> userList = new List<User>();
@@ -35,6 +35,16 @@ namespace Student_Housing
 
         //Global list used to contain all Maintenance Requests
         List<Maintenance> maintenanceList = new List<Maintenance>();
+
+        //Global list used to contain all Apartment Requests
+        List<Apartment> apartmentList = new List<Apartment>();
+
+        string entityState = "Modify";
+        //
+
+        //making the current user available
+        public User currentUser;
+
 
         /// <summary>
         /// User data ObservableCollection constructors
@@ -68,12 +78,13 @@ namespace Student_Housing
             public String BuildingID { get; set; }
             public String BuildingName { get; set; }
             public String VillageID { get; set; }
+            public String VillageName { get; set; }
             public String Description { get; set; }
             public DateTime DateSurveyed { get; set; }
             public DateTime NextSurveyDue { get; set; }
         }
 
-        /// User data ObservableCollection constructors
+        /// Maintenance data ObservableCollection constructors
         /// </summary>
         private ObservableCollection<MaintenanceListData> _MaintenanceSummaryData = new ObservableCollection<MaintenanceListData>();
 
@@ -94,6 +105,35 @@ namespace Student_Housing
             public String AssignedTo { get; set; }
         }
 
+        /// <summary>
+        /// Apartment ObservableCollectionconstructures
+        /// </summary>
+        private ObservableCollection<ApartmentListData> _ApartmentSummaryData = new ObservableCollection<ApartmentListData>();
+
+        public ObservableCollection<ApartmentListData> ApartmentSummaryDataCollection
+        { get { return _ApartmentSummaryData; } }
+
+        public class ApartmentListData
+        {
+            public String ApartmentID { get; set; }
+            public String ApartmentNumber { get; set; }
+            public String CategoryID { get; set; }
+            public String BuildingID { get; set; }
+            public String VillageID { get; set; }
+            public int NumberOfRooms { get; set; }
+            public int RoomOccupancy { get; set; }
+            public int TotalRoomOccupancy { get; set; }
+            public String RoomAvailable { get; set; }
+            public String OccupancyType { get; set; }
+            public String AirCon { get; set; }
+            public String RoomType { get; set; }
+            public String Furnished { get; set; }
+            public String Dishwasher { get; set; }
+            public String Town { get; set; }
+            public String Address { get; set; }
+            public String BuildingName { get; set; }
+            public String VillageName { get; set; }
+        }
 
         //Global list used to contain all users
         
@@ -128,17 +168,22 @@ namespace Student_Housing
             }
         }
 
-        private void PopulateCollection()
-        {
-            foreach (var user in UserSummaryDataCollection)
-            {
-                _UserSummaryData.Add(new UserListData
-                {
-                    AccessLevel = 0;
+        /// <summary>
+        /// Method to populate the user details in the list view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+       // private void PopulateCollection()
+       // {
+       //     foreach (var user in UserSummaryDataCollection)
+       //     {
+       //         _UserSummaryData.Add(new UserListData
+       //         {
+       //             AccessLevel = 0;
                                       
                   
-                });
-            }
+       //         });
+        //    }
 
         private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
         {

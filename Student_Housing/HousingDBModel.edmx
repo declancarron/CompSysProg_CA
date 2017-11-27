@@ -11,20 +11,28 @@
           </Key>
           <Property Name="ApartmentID" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="ApartmentNumber" Type="nvarchar" MaxLength="6" Nullable="false" />
-          <Property Name="CategoryID" Type="nvarchar" MaxLength="4" Nullable="false" />
-          <Property Name="BuildingID" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="VillageID" Type="nvarchar" MaxLength="10" />
+          <Property Name="CategoryID" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="BuildingID" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="VillageID" Type="nvarchar" MaxLength="36" />
           <Property Name="NumberOfRooms" Type="int" />
           <Property Name="RoomOccupancy" Type="int" />
           <Property Name="TotalRoomOccupancy" Type="int" />
           <Property Name="RoomAvailable" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="OccupancyType" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="VillageName" Type="nchar" MaxLength="10" />
+          <Property Name="AirCon" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="RoomType" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Furnished" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Dishwasher" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Town" Type="nvarchar" MaxLength="40" Nullable="false" />
         </EntityType>
         <EntityType Name="ApartmentCategory">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CategoryID" Type="nvarchar" MaxLength="36" Nullable="false" />
           <Property Name="AirCon" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="RoomType" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="Furnished" Type="nchar" MaxLength="10" Nullable="false" />
@@ -69,10 +77,25 @@
           </Key>
           <Property Name="BuildingID" Type="nvarchar" MaxLength="36" Nullable="false" />
           <Property Name="BuildingName" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="VillageID" Type="nvarchar" MaxLength="10" />
+          <Property Name="VillageID" Type="nvarchar" MaxLength="36" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="DateSurveyed" Type="datetime" />
           <Property Name="NextSurveyDue" Type="date" />
+          <Property Name="VillageName" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="nvarchar" MaxLength="36" Nullable="false" />
+          <Property Name="Forename" Type="nvarchar" MaxLength="26" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="26" Nullable="false" />
+          <Property Name="JobTitle" Type="nvarchar" MaxLength="36" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="Department" Type="nvarchar" MaxLength="36" />
+          <Property Name="JobStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="MobileNum" Type="nvarchar" MaxLength="11" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="11" />
         </EntityType>
         <EntityType Name="Maintenance">
           <Key>
@@ -80,7 +103,7 @@
           </Key>
           <Property Name="RequestID" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="UserID" Type="nvarchar" MaxLength="36" Nullable="false" />
-          <Property Name="BuildingID" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="BuildingID" Type="nvarchar" MaxLength="36" Nullable="false" />
           <Property Name="BuildingName" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="ProblemDescription" Type="nvarchar(max)" />
           <Property Name="SubmissionDate" Type="date" Nullable="false" />
@@ -129,7 +152,7 @@
           <Key>
             <PropertyRef Name="VillageID" />
           </Key>
-          <Property Name="VillageID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="VillageID" Type="nvarchar" MaxLength="36" Nullable="false" />
           <Property Name="VillageName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Address1" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -137,6 +160,54 @@
           <Property Name="TownArea" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="PostCode" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <Association Name="FK_Apartment_ApartmentCategory">
+          <End Role="ApartmentCategory" Type="Self.ApartmentCategory" Multiplicity="1" />
+          <End Role="Apartment" Type="Self.Apartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApartmentCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Apartment">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apartment_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Apartment" Type="Self.Apartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="Apartment">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apartment_Village">
+          <End Role="Village" Type="Self.Village" Multiplicity="0..1" />
+          <End Role="Apartment" Type="Self.Apartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Village">
+              <PropertyRef Name="VillageID" />
+            </Principal>
+            <Dependent Role="Apartment">
+              <PropertyRef Name="VillageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Building_To_Village">
           <End Role="Village" Type="Self.Village" Multiplicity="0..1" />
           <End Role="Building" Type="Self.Building" Multiplicity="*" />
@@ -149,18 +220,83 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Maintenance_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maintenance_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maintenance_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="dcarronHousingModelStoreContainer">
           <EntitySet Name="Apartment" EntityType="Self.Apartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ApartmentCategory" EntityType="Self.ApartmentCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Maintenance" EntityType="Self.Maintenance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Resident" EntityType="Self.Resident" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Village" EntityType="Self.Village" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Apartment_ApartmentCategory" Association="Self.FK_Apartment_ApartmentCategory">
+            <End Role="ApartmentCategory" EntitySet="ApartmentCategory" />
+            <End Role="Apartment" EntitySet="Apartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apartment_Building" Association="Self.FK_Apartment_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Apartment" EntitySet="Apartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apartment_Village" Association="Self.FK_Apartment_Village">
+            <End Role="Village" EntitySet="Village" />
+            <End Role="Apartment" EntitySet="Apartment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_User" Association="Self.FK_Applicant_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
           <AssociationSet Name="FK_Building_To_Village" Association="Self.FK_Building_To_Village">
             <End Role="Village" EntitySet="Village" />
             <End Role="Building" EntitySet="Building" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maintenance_Building" Association="Self.FK_Maintenance_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maintenance_Employee" Association="Self.FK_Maintenance_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maintenance_User" Association="Self.FK_Maintenance_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Maintenance" EntitySet="Maintenance" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -173,27 +309,36 @@
           </Key>
           <Property Name="ApartmentID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ApartmentNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CategoryID" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BuildingID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="VillageID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BuildingID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VillageID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
           <Property Name="NumberOfRooms" Type="Int32" />
           <Property Name="RoomOccupancy" Type="Int32" />
           <Property Name="TotalRoomOccupancy" Type="Int32" />
           <Property Name="RoomAvailable" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="OccupancyType" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="ApartmentCategories" Relationship="dcarronHousingModel.ApartmentApartmentCategory" FromRole="Apartment" ToRole="ApartmentCategory" />
+          <NavigationProperty Name="ApartmentCategory" Relationship="Self.FK_Apartment_ApartmentCategory" FromRole="Apartment" ToRole="ApartmentCategory" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_Apartment_Building" FromRole="Apartment" ToRole="Building" />
+          <NavigationProperty Name="Village" Relationship="Self.FK_Apartment_Village" FromRole="Apartment" ToRole="Village" />
+          <Property Name="VillageName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AirCon" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="RoomType" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Furnished" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Dishwasher" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="Address1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Town" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ApartmentCategory">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
-          <Property Name="CategoryID" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AirCon" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="RoomType" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Furnished" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Dishwasher" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Apartment" Relationship="dcarronHousingModel.ApartmentApartmentCategory" FromRole="ApartmentCategory" ToRole="Apartment" />
-          <Property Name="ApartmentApartmentID" Type="String" Nullable="true" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Apartments" Relationship="Self.FK_Apartment_ApartmentCategory" FromRole="ApartmentCategory" ToRole="Apartment" />
         </EntityType>
         <EntityType Name="Applicant">
           <Key>
@@ -227,6 +372,7 @@
           <Property Name="ApplicationStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ApartmentOfferStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ApartmentRejectCount" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Applicant_User" FromRole="Applicant" ToRole="User" />
         </EntityType>
         <EntityType Name="Building">
           <Key>
@@ -234,12 +380,29 @@
           </Key>
           <Property Name="BuildingID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BuildingName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="VillageID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="VillageID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DateSurveyed" Type="DateTime" Precision="3" />
           <Property Name="NextSurveyDue" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Apartments" Relationship="Self.FK_Apartment_Building" FromRole="Building" ToRole="Apartment" />
           <NavigationProperty Name="Village" Relationship="Self.FK_Building_To_Village" FromRole="Building" ToRole="Village" />
-          <NavigationProperty Name="Maintenances" Relationship="dcarronHousingModel.BuildingMaintenance" FromRole="Building" ToRole="Maintenance" />
+          <NavigationProperty Name="Maintenances" Relationship="Self.FK_Maintenance_Building" FromRole="Building" ToRole="Maintenance" />
+          <Property Name="VillageName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Forename" Type="String" MaxLength="26" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="26" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+          <Property Name="JobStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNum" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Maintenances" Relationship="Self.FK_Maintenance_Employee" FromRole="Employee" ToRole="Maintenance" />
         </EntityType>
         <EntityType Name="Maintenance">
           <Key>
@@ -247,7 +410,7 @@
           </Key>
           <Property Name="RequestID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="BuildingID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BuildingID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BuildingName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProblemDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SubmissionDate" Type="DateTime" Nullable="false" Precision="0" />
@@ -255,10 +418,9 @@
           <Property Name="RequestCompletionDate" Type="DateTime" Precision="0" />
           <Property Name="EmployeeID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AssignedTo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Building" Relationship="dcarronHousingModel.BuildingMaintenance" FromRole="Maintenance" ToRole="Building" />
-          <Property Name="BuildingBuildingID" Type="String" Nullable="true" MaxLength="36" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="dcarronHousingModel.MaintenanceUser" FromRole="Maintenance" ToRole="User" />
-          <Property Name="UserUserID" Type="String" Nullable="true" MaxLength="36" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_Maintenance_Building" FromRole="Maintenance" ToRole="Building" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_Maintenance_Employee" FromRole="Maintenance" ToRole="Employee" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Maintenance_User" FromRole="Maintenance" ToRole="User" />
         </EntityType>
         <EntityType Name="Resident">
           <Key>
@@ -295,21 +457,71 @@
           <Property Name="CountryCode" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="MobileNum" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Telephone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Maintenances" Relationship="dcarronHousingModel.MaintenanceUser" FromRole="User" ToRole="Maintenance" />
+          <NavigationProperty Name="Applicants" Relationship="Self.FK_Applicant_User" FromRole="User" ToRole="Applicant" />
+          <NavigationProperty Name="Maintenances" Relationship="Self.FK_Maintenance_User" FromRole="User" ToRole="Maintenance" />
         </EntityType>
         <EntityType Name="Village">
           <Key>
             <PropertyRef Name="VillageID" />
           </Key>
-          <Property Name="VillageID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VillageID" Type="String" MaxLength="36" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="VillageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TownArea" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Apartments" Relationship="Self.FK_Apartment_Village" FromRole="Village" ToRole="Apartment" />
           <NavigationProperty Name="Buildings" Relationship="Self.FK_Building_To_Village" FromRole="Village" ToRole="Building" />
         </EntityType>
+        <Association Name="FK_Apartment_ApartmentCategory">
+          <End Role="ApartmentCategory" Type="Self.ApartmentCategory" Multiplicity="1" />
+          <End Role="Apartment" Type="Self.Apartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApartmentCategory">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="Apartment">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apartment_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Apartment" Type="Self.Apartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingID" />
+            </Principal>
+            <Dependent Role="Apartment">
+              <PropertyRef Name="BuildingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Apartment_Village">
+          <End Role="Village" Type="Self.Village" Multiplicity="0..1" />
+          <End Role="Apartment" Type="Self.Apartment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Village">
+              <PropertyRef Name="VillageID" />
+            </Principal>
+            <Dependent Role="Apartment">
+              <PropertyRef Name="VillageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Building_To_Village">
           <End Role="Village" Type="Self.Village" Multiplicity="0..1" />
           <End Role="Building" Type="Self.Building" Multiplicity="*" />
@@ -322,77 +534,102 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="dcarronHousingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Apartments" EntityType="Self.Apartment" />
-          <EntitySet Name="ApartmentCategories" EntityType="Self.ApartmentCategory" />
-          <EntitySet Name="Applicants" EntityType="Self.Applicant" />
-          <EntitySet Name="Buildings" EntityType="Self.Building" />
-          <EntitySet Name="Maintenances" EntityType="Self.Maintenance" />
-          <EntitySet Name="Residents" EntityType="Self.Resident" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Villages" EntityType="Self.Village" />
-          <AssociationSet Name="FK_Building_To_Village" Association="Self.FK_Building_To_Village">
-            <End Role="Village" EntitySet="Villages" />
-            <End Role="Building" EntitySet="Buildings" />
-          </AssociationSet>
-          <AssociationSet Name="BuildingMaintenance" Association="dcarronHousingModel.BuildingMaintenance">
-            <End Role="Building" EntitySet="Buildings" />
-            <End Role="Maintenance" EntitySet="Maintenances" />
-          </AssociationSet>
-          <AssociationSet Name="MaintenanceUser" Association="dcarronHousingModel.MaintenanceUser">
-            <End Role="Maintenance" EntitySet="Maintenances" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="ApartmentApartmentCategory" Association="dcarronHousingModel.ApartmentApartmentCategory">
-            <End Role="Apartment" EntitySet="Apartments" />
-            <End Role="ApartmentCategory" EntitySet="ApartmentCategories" />
-          </AssociationSet>
-        </EntityContainer>
-        <Association Name="BuildingMaintenance">
-          <End Type="dcarronHousingModel.Building" Role="Building" Multiplicity="0..1" />
-          <End Type="dcarronHousingModel.Maintenance" Role="Maintenance" Multiplicity="*" />
+        <Association Name="FK_Maintenance_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Building">
               <PropertyRef Name="BuildingID" />
             </Principal>
             <Dependent Role="Maintenance">
-              <PropertyRef Name="BuildingBuildingID" />
+              <PropertyRef Name="BuildingID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="MaintenanceUser">
-          <End Type="dcarronHousingModel.Maintenance" Role="Maintenance" Multiplicity="*" />
-          <End Type="dcarronHousingModel.User" Role="User" Multiplicity="0..1" />
+        <Association Name="FK_Maintenance_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="Maintenance">
+              <PropertyRef Name="EmployeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Maintenance_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Maintenance" Type="Self.Maintenance" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserID" />
             </Principal>
             <Dependent Role="Maintenance">
-              <PropertyRef Name="UserUserID" />
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="ApartmentApartmentCategory">
-          <End Type="dcarronHousingModel.Apartment" Role="Apartment" Multiplicity="0..1" />
-          <End Type="dcarronHousingModel.ApartmentCategory" Role="ApartmentCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Apartment">
-              <PropertyRef Name="ApartmentID" />
-            </Principal>
-            <Dependent Role="ApartmentCategory">
-              <PropertyRef Name="ApartmentApartmentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityContainer Name="dcarronHousingEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Apartments" EntityType="Self.Apartment" />
+          <EntitySet Name="ApartmentCategories" EntityType="Self.ApartmentCategory" />
+          <EntitySet Name="Applicants" EntityType="Self.Applicant" />
+          <EntitySet Name="Buildings" EntityType="Self.Building" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Maintenances" EntityType="Self.Maintenance" />
+          <EntitySet Name="Residents" EntityType="Self.Resident" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Villages" EntityType="Self.Village" />
+          <AssociationSet Name="FK_Apartment_ApartmentCategory" Association="Self.FK_Apartment_ApartmentCategory">
+            <End Role="ApartmentCategory" EntitySet="ApartmentCategories" />
+            <End Role="Apartment" EntitySet="Apartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apartment_Building" Association="Self.FK_Apartment_Building">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Apartment" EntitySet="Apartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Apartment_Village" Association="Self.FK_Apartment_Village">
+            <End Role="Village" EntitySet="Villages" />
+            <End Role="Apartment" EntitySet="Apartments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_User" Association="Self.FK_Applicant_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Applicant" EntitySet="Applicants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Building_To_Village" Association="Self.FK_Building_To_Village">
+            <End Role="Village" EntitySet="Villages" />
+            <End Role="Building" EntitySet="Buildings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maintenance_Building" Association="Self.FK_Maintenance_Building">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Maintenance" EntitySet="Maintenances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maintenance_Employee" Association="Self.FK_Maintenance_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Maintenance" EntitySet="Maintenances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Maintenance_User" Association="Self.FK_Maintenance_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Maintenance" EntitySet="Maintenances" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="dcarronHousingModelStoreContainer" CdmEntityContainer="dcarronHousingEntities">
+        <EntityContainerMapping StorageEntityContainer="dcarronHousingModelStoreContainer" CdmEntityContainer="dcarronHousingEntities2">
           <EntitySetMapping Name="Apartments">
             <EntityTypeMapping TypeName="dcarronHousingModel.Apartment">
               <MappingFragment StoreEntitySet="Apartment">
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Dishwasher" ColumnName="Dishwasher" />
+                <ScalarProperty Name="Furnished" ColumnName="Furnished" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="AirCon" ColumnName="AirCon" />
+                <ScalarProperty Name="VillageName" ColumnName="VillageName" />
                 <ScalarProperty Name="ApartmentID" ColumnName="ApartmentID" />
                 <ScalarProperty Name="ApartmentNumber" ColumnName="ApartmentNumber" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
@@ -454,12 +691,28 @@
           <EntitySetMapping Name="Buildings">
             <EntityTypeMapping TypeName="dcarronHousingModel.Building">
               <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="VillageName" ColumnName="VillageName" />
                 <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
                 <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
                 <ScalarProperty Name="VillageID" ColumnName="VillageID" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="DateSurveyed" ColumnName="DateSurveyed" />
                 <ScalarProperty Name="NextSurveyDue" ColumnName="NextSurveyDue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="dcarronHousingModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="Forename" ColumnName="Forename" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="JobStatus" ColumnName="JobStatus" />
+                <ScalarProperty Name="MobileNum" ColumnName="MobileNum" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

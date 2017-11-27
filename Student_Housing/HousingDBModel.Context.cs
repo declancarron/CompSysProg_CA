@@ -13,10 +13,10 @@ namespace Student_Housing
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class dcarronHousingEntities : DbContext
+    public partial class dcarronHousingEntities2 : DbContext
     {
-        public dcarronHousingEntities()
-            : base("name=dcarronHousingEntities")
+        public dcarronHousingEntities2()
+            : base("name=dcarronHousingEntities2")
         {
         }
     
@@ -29,6 +29,7 @@ namespace Student_Housing
         public virtual DbSet<ApartmentCategory> ApartmentCategories { get; set; }
         public virtual DbSet<Applicant> Applicants { get; set; }
         public virtual DbSet<Building> Buildings { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Maintenance> Maintenances { get; set; }
         public virtual DbSet<Resident> Residents { get; set; }
         public virtual DbSet<User> Users { get; set; }

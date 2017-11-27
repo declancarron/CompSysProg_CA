@@ -14,13 +14,19 @@ namespace Student_Housing
     
     public partial class ApartmentCategory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ApartmentCategory()
+        {
+            this.Apartments = new HashSet<Apartment>();
+        }
+    
         public string CategoryID { get; set; }
         public string AirCon { get; set; }
         public string RoomType { get; set; }
         public string Furnished { get; set; }
         public string Dishwasher { get; set; }
-        public string ApartmentApartmentID { get; set; }
     
-        public virtual Apartment Apartment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Apartment> Apartments { get; set; }
     }
 }

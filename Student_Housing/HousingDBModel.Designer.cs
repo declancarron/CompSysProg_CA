@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\L00029122\source\repos\CompSysProg_CA\Student_Housing\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\L00029122\Source\Repos\CompSysProg_CA\Student_Housing\HousingDBModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

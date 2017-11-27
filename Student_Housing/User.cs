@@ -17,6 +17,7 @@ namespace Student_Housing
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.Applicants = new HashSet<Applicant>();
             this.Maintenances = new HashSet<Maintenance>();
         }
     
@@ -32,6 +33,8 @@ namespace Student_Housing
         public string MobileNum { get; set; }
         public string Telephone { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Applicant> Applicants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Maintenance> Maintenances { get; set; }
     }

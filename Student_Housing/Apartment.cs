@@ -14,12 +14,6 @@ namespace Student_Housing
     
     public partial class Apartment
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Apartment()
-        {
-            this.ApartmentCategories = new HashSet<ApartmentCategory>();
-        }
-    
         public string ApartmentID { get; set; }
         public string ApartmentNumber { get; set; }
         public string CategoryID { get; set; }
@@ -30,8 +24,17 @@ namespace Student_Housing
         public Nullable<int> TotalRoomOccupancy { get; set; }
         public string RoomAvailable { get; set; }
         public string OccupancyType { get; set; }
+        public string VillageName { get; set; }
+        public string AirCon { get; set; }
+        public string RoomType { get; set; }
+        public string Furnished { get; set; }
+        public string Dishwasher { get; set; }
+        public string Address1 { get; set; }
+        public string Street { get; set; }
+        public string Town { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ApartmentCategory> ApartmentCategories { get; set; }
+        public virtual ApartmentCategory ApartmentCategory { get; set; }
+        public virtual Building Building { get; set; }
+        public virtual Village Village { get; set; }
     }
 }

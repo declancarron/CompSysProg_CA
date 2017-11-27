@@ -24,5 +24,16 @@ namespace Student_Housing
         {
             InitializeComponent();
         }
+
+        //village selection from Village Combobox will populate the appartments available for selection
+        private void ApartmentVillageCombox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void lstApartmentList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
