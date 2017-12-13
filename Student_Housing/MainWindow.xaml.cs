@@ -62,7 +62,10 @@ namespace Student_Housing
             public string Surname { get; set; }
             public string Password { get; set; }
             public int AccessLevel { get; set; }
-
+            public string Address { get; set; }
+            public string Town { get; set; }
+            public string City { get; set; }
+            public string County { get; set; }
         }
 
         /// <summary>
@@ -145,70 +148,41 @@ namespace Student_Housing
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            User user = new User();
-            string username = txtStudentID.Text.Trim();
-            //Password box is accessed using different commands to textbox
-            string password = tbxPasswordBox.Password;
-            //Check if inputted credentials are in SQL database        
-            user = VerifyUserDetails(username, password);
-            if (user.AccessLevel > 0) //user exists
+            try
             {
-                //create a new instance of the Dashboard window
-                Dashboard dashboard = new Dashboard();
-                dashboard.Owner = this;
-                dashboard.currentUser = user;
-                this.Hide();
-                dashboard.ShowDialog();
-                
+                User user = new User();
+                string username = tbxStudentID.Text.Trim();
+                //Password box is accessed using different commands to textbox
+                string password = tbxPasswordBox.Password;
+                //Check if inputted credentials are in SQL database        
+                user = VerifyUserDetails(username.ToLower(), password);
+                if (user.AccessLevel > 0) //user exists
+                {
+                    //create a new instance of the Dashboard window
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.Owner = this;
+                    dashboard.currentUser = user;
+                    this.Hide();
+                    dashboard.ShowDialog();
+
+                }
+                else
+                {
+                    //clear the entered login detail if there is an error
+                    mtdClearLoginDetails();
+                    //User does not exist
+                    MessageBox.Show("Invalid user");
+                }
             }
-            else
+            catch (Exception)
             {
-                //User does not exist
-                MessageBox.Show("Invalid user");
+
+                MessageBox.Show("Houston we have a problem");
             }
+           
         }
 
-        /// <summary>
-        /// Method to populate the user details in the list view
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-       // private void PopulateCollection()
-       // {
-       //     foreach (var user in UserSummaryDataCollection)
-       //     {
-       //         _UserSummaryData.Add(new UserListData
-       //         {
-       //             AccessLevel = 0;
-                                      
-                  
-       //         });
-        //    }
-
-        private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
-        {
-            // declaring a new instanace of the Password Reset screen
-            PwdResetScreen resetPassword = new PwdResetScreen();
-            resetPassword.Owner = this;
-            //hide the login dialog screen
-            this.Hide();
-            //show the password dialog box
-            resetPassword.ShowDialog();
-
-        }
-    
-
- 
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            //Close down application
-            this.Close();
-
-            //close out all running applications
-            Environment.Exit(0);
-        }
-
+        //Verify the user details entered at login
         private User VerifyUserDetails(string username, string password)
         {
             User verifiedUser = new User();
@@ -228,8 +202,63 @@ namespace Student_Housing
             return verifiedUser;
         }
 
+        //clear the entered login detail if there is an error
+        private void mtdClearLoginDetails()
+        {
+            tbxStudentID.Text = "";
+            tbxPasswordBox.Password = "";
+        }
+
+        //Login page cancel action
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            //Close down application
+            this.Close();
+
+            //close out all running applications
+            Environment.Exit(0);
+        }
+
+        //login New User registration action
+        private void btnNewUser_Click(object sender, RoutedEventArgs e)
+        {
+            //create a new instance of the New User Registration Page
+            NewUserReg nwUserReg = new NewUserReg();
+
+            nwUserReg.Owner = this;
+
+            //hide the login screen
+            this.Hide();
+
+            //show the new user registration page
+            nwUserReg.ShowDialog();
+        }
+
+        //login forgot password action to open password rest page
+        private void btnForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            // declaring a new instanace of the Password Reset screen
+            PwdResetScreen resetPassword = new PwdResetScreen();
+            resetPassword.Owner = this;
+            //hide the login dialog screen
+            this.Hide();
+            //show the password dialog box
+            resetPassword.ShowDialog();
+
+        }
+
+        //load details to occur in the background while the application is loading
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            //do this first before any user interaction is allowed with this window
+            LoadUsers();
+            LoadBuildings();
+            LoadMaintenanceReqs();
+        }
+
         /// <summary>
-        /// load the users deatilas from the Users database
+        /// load the users details from the Users database
         /// </summary>
         private void LoadUsers()
         {
@@ -296,20 +325,27 @@ namespace Student_Housing
 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+
+
+        /// <summary>
+        /// Method to populate the user details in the  main dashboard list view
+        /// </summary>
+        private void PopulateUserCollection()
         {
-        
-            //do this first before any user interaction is allowed with this window
-            LoadUsers();
-            LoadBuildings();
-            LoadMaintenanceReqs();
+            foreach (var user in UserSummaryDataCollection)
+            {
+                _UserSummaryData.Add(new UserListData
+                {
+                    AccessLevel = user.AccessLevel,
+                    UserID = user.UserID,
+                    Forename = user.Forename,
+
+
+
+                });
+            }
+
         }
-
-        private void btnNewUser_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
 
     }

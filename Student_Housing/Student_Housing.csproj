@@ -266,5 +266,11 @@
       <LastGenOutput>HousingDBModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UnitTestHousing\UnitTestHousing.csproj">
+      <Project>{680a2ebe-4fa5-46c0-8c67-e80d2cef4d33}</Project>
+      <Name>UnitTestHousing</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

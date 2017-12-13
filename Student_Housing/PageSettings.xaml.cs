@@ -86,7 +86,7 @@ namespace Student_Housing
 
         private void lstUsersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            String currentUser = "";
+            //String currentUser = "";
 
             if (userList.Count > 0)//Make sure a user record exists in the database
             {
@@ -201,6 +201,7 @@ namespace Student_Housing
             }
         }
 
+        //clear the details 
         private void mtdClearUserDetails()
         {
             tbkForename.Text = "";
@@ -219,7 +220,6 @@ namespace Student_Housing
         /// following section is for building details, populating the listview
         /// making changes to selected building details
         /// </summary>
-        /// <param name="selectedUser"></param>
         private void mtdPopulateBuildingDetails(Building selectedBuilding)
         {
             dockBuildingsPanel.Visibility = Visibility.Visible;
@@ -231,12 +231,12 @@ namespace Student_Housing
             {
                 cboBuildingVillage.SelectedIndex = 0;
             }
-            if (selectedBuilding.VillageName == "Ballyraine Halls")//A new record may need to be created and its index will =0
+            if (selectedBuilding.VillageName == "Ballyraine Halls")
             {
                 cboBuildingVillage.SelectedIndex = 1;
             }
 
-            if (selectedBuilding.VillageName == "Port Road Apartments")//A new record may need to be created and its index will =0
+            if (selectedBuilding.VillageName == "Port Road Apartments")
             {
                 cboBuildingVillage.SelectedIndex = 2;
             }
@@ -246,11 +246,11 @@ namespace Student_Housing
 
         private void lstBuildingsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            String currentBuilding = "";
+            //String currentBuilding = "";
 
             if (buildingList.Count > 0)//Make sure a user record exists in the database
             {
-                //Gets the user from the userList at the same position it is in within the ListView
+                //Gets the building record from the buildingList at the same position it is in within the ListView
                // currentBuilding = buildingList.ElementAt(this.lstBuildingsList.SelectedIndex);
                // mtdPopulateBuildingDetails(currentBuilding);
             }
@@ -294,7 +294,7 @@ namespace Student_Housing
             {
                 cboRequestStatus.SelectedIndex = 0;
             }
-            if (selectedMaintenance.RequestStatus == "Work In Progress")//A new record may need to be created and its index will =0
+            if (selectedMaintenance.RequestStatus == "Work In Progress")
             {
                 cboRequestStatus.SelectedIndex = 1;
             }
@@ -306,11 +306,11 @@ namespace Student_Housing
 
         private void lstMaintenanceList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            String currentMaintenanceReq = "";
+            //String currentMaintenanceReq = "";
 
             if (maintenanceList.Count > 0)//Make sure a user record exists in the database
             {
-                //Gets the user from the userList at the same position it is in within the ListView
+                //Gets the maintenance record from the maintenaneList at the same position it is in within the ListView
                // currentMaintenanceReq = maintenanceList.ElementAt(this.lstMaintenceList.SelectedIndex);
                 //mtdPopulateMaintenanceDetails(currentMaintenanceReq);
             }
@@ -328,5 +328,22 @@ namespace Student_Housing
 
         }
 
+        //changes made using the User AccessLevel combobox
+        private void cboxAccessLevel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        //changes made using the building village selection combobox
+        private void cboBuildingVillage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        //changes made to the maintenance request status combobox
+        private void cboRequestStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

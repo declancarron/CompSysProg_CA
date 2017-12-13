@@ -7,35 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Student_Housing
+namespace UnitTestHousing
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Building
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Building()
         {
-            this.Applicants = new HashSet<Applicant>();
+            this.Apartments = new HashSet<Apartment>();
             this.Maintenances = new HashSet<Maintenance>();
         }
     
-        public string UserID { get; set; }
-        public string UName { get; set; }
-        public string Forename { get; set; }
-        public string Surname { get; set; }
-        public string Password { get; set; }
-        public int AccessLevel { get; set; }
-        public string Email { get; set; }
-        public string MobileNum { get; set; }
-        public string Address { get; set; }
-        public string Town { get; set; }
-        public string City { get; set; }
-        public string County { get; set; }
+        public string BuildingID { get; set; }
+        public string BuildingName { get; set; }
+        public string VillageID { get; set; }
+        public string Description { get; set; }
+        public Nullable<System.DateTime> DateSurveyed { get; set; }
+        public Nullable<System.DateTime> NextSurveyDue { get; set; }
+        public string VillageName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Applicant> Applicants { get; set; }
+        public virtual ICollection<Apartment> Apartments { get; set; }
+        public virtual Village Village { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Maintenance> Maintenances { get; set; }
     }

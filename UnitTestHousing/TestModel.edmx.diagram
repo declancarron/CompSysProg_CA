@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1c8bd683d47b4b7cb65b0e0eb91ce0da" Name="Diagram1">
+        <EntityTypeShape EntityType="dcarronHousingModeltest.Apartment" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dcarronHousingModeltest.Building" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="dcarronHousingModeltest.Employee" Width="1.5" PointX="3" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dcarronHousingModeltest.Maintenance" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dcarronHousingModeltest.User" Width="1.5" PointX="3" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dcarronHousingModeltest.Village" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="dcarronHousingModeltest.FK_Apartment_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="dcarronHousingModeltest.FK_Apartment_Village" ManuallyRouted="false" />
+        <AssociationConnector Association="dcarronHousingModeltest.FK_Building_To_Village" ManuallyRouted="false" />
+        <AssociationConnector Association="dcarronHousingModeltest.FK_Maintenance_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="dcarronHousingModeltest.FK_Maintenance_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="dcarronHousingModeltest.FK_Maintenance_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

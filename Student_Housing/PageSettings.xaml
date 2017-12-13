@@ -69,7 +69,7 @@
                         </ListView.View>
                     </ListView>
                     <!--Dockpanel for displaying user details-->
-                    <DockPanel x:Name="dockUserPanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="497" Grid.ColumnSpan="2" Visibility="Hidden" >
+                    <DockPanel x:Name="dockUserPanel" HorizontalAlignment="Left" Height="171" LastChildFill="False" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="497" Grid.ColumnSpan="2" Visibility="Visible" >
                         <Grid Height="171" VerticalAlignment="Top" Width="507">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40*"/>
@@ -89,7 +89,7 @@
                             <TextBox x:Name="tbkPassord" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
 
                             <!--Access Level Dropdown selection-->
-                            <ComboBox x:Name="cboxAccessLevel" Grid.Column="1" Margin="10,0,91,0" Grid.Row="4">
+                            <ComboBox x:Name="cboxAccessLevel" Grid.Column="1" Margin="10,0,91,0" Grid.Row="4" SelectionChanged="cboxAccessLevel_SelectionChanged">
                                 <ComboBoxItem Content="Nornal User"/>
                                 <ComboBoxItem Content="Resident"/>
                                 <ComboBoxItem Content="Maintenance Staff"/>
@@ -187,7 +187,7 @@
                             </Grid.RowDefinitions>
                             <TextBox x:Name="tbkBuildingName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="22" Width="284"/>
                             <TextBox x:Name="tbkBuildingDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="10,6,0,1" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="284" Height="22"/>
-                            <ComboBox x:Name="cboBuildingVillage" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="219" SelectionChanged="ComboBox_SelectionChanged">
+                            <ComboBox x:Name="cboBuildingVillage" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="219" SelectionChanged="cboBuildingVillage_SelectionChanged">
                                 <ComboBoxItem Content="Select Village"/>
                                 <ComboBoxItem Content="1. Grand Central"/>
                                 <ComboBoxItem Content="2. Ballyraine Halls"/>
@@ -297,7 +297,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <DockPanel x:Name="dockMaintenancePanel" HorizontalAlignment="Left" LastChildFill="False" Margin="10,10,0,-85" Grid.Row="1" Width="495" Visibility="Hidden" >
+                    <DockPanel x:Name="dockMaintenancePanel" HorizontalAlignment="Left" LastChildFill="False" Margin="10,10,0,-85" Grid.Row="1" Width="495" Visibility="Visible" >
                         <Grid Height="270" VerticalAlignment="Top" Width="507" Margin="0,0,0,-99">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="40*"/>
@@ -320,7 +320,7 @@
                             <TextBox x:Name="tbkMaintenanceBuildingName" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
                             <TextBox x:Name="tbkMaintenanceDescription" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="269" Height="69"/>
                             <TextBox x:Name="tbkMaintenanceAssignedTo" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="22"/>
-                            <ComboBox x:Name="cboRequestStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="5" Width="200" Height="22">
+                            <ComboBox x:Name="cboRequestStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="10,4,0,0" Grid.Row="5" Width="200" Height="22" SelectionChanged="cboRequestStatus_SelectionChanged">
                                 <ComboBoxItem Content="Request Status"/>
                                 <ComboBoxItem Content="Completed"/>
                                 <ComboBoxItem Content="Work In Progress"/>

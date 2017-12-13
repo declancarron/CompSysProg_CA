@@ -7,35 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Student_Housing
+namespace UnitTestHousing
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Employee
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Employee()
         {
-            this.Applicants = new HashSet<Applicant>();
             this.Maintenances = new HashSet<Maintenance>();
         }
     
-        public string UserID { get; set; }
-        public string UName { get; set; }
+        public string EmployeeID { get; set; }
         public string Forename { get; set; }
         public string Surname { get; set; }
-        public string Password { get; set; }
-        public int AccessLevel { get; set; }
-        public string Email { get; set; }
+        public string JobTitle { get; set; }
+        public string Grade { get; set; }
+        public string Department { get; set; }
+        public string JobStatus { get; set; }
         public string MobileNum { get; set; }
-        public string Address { get; set; }
-        public string Town { get; set; }
-        public string City { get; set; }
-        public string County { get; set; }
+        public string Telephone { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Applicant> Applicants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Maintenance> Maintenances { get; set; }
     }

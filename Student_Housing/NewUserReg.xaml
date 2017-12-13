@@ -5,109 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Student_Housing"
         mc:Ignorable="d"
-        Title="" Height="893.363" Width="461.702" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="" Height="552.363" Width="517.702" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Margin="0,0,0,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="179*"/>
             <ColumnDefinition Width="193*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="32*"/>
-            <RowDefinition Height="660*"/>
-            <RowDefinition Height="98*"/>
-            <RowDefinition Height="93*"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="130*"/>
+            <RowDefinition Height="124*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="lblHeader" Content="New User Regristration" HorizontalAlignment="Left" Margin="24,4,0,4" VerticalAlignment="Center" Height="24" Width="133" />
-        <Label x:Name="lblFName" Content="Forename" HorizontalAlignment="Left" Margin="24,0,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="63"/>
-        <Label x:Name="lblSName" Content="Surname" HorizontalAlignment="Left" Margin="24,25,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="57"/>
-        <Label x:Name="lblMobile" Content="Mobile No." HorizontalAlignment="Left" Margin="24,51,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="69"/>
-        <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="24,77,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="38"/>
-        <Label x:Name="lblAddress" Content="Home Address" HorizontalAlignment="Left" Margin="24,105,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="87"/>
-        <Label x:Name="lblTown" Content="Town" HorizontalAlignment="Left" Margin="24,133,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="38"/>
-        <Label x:Name="lblCity" Content="City" HorizontalAlignment="Left" Margin="24,161,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="38"/>
-        <Label x:Name="lblCounty" Content="County" HorizontalAlignment="Left" Margin="24,189,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="53"/>
-        <Label x:Name="lblCountry" Content="Country" HorizontalAlignment="Left" Margin="24,217,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="57"/>
-        <Label x:Name="lblDOB" Content="Date of Birth" HorizontalAlignment="Left" Margin="24,264,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="77"/>
-        <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Margin="24,290,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="49"/>
-        <Label x:Name="lblMarriedStatus" Content="Married Status" HorizontalAlignment="Left" Margin="24,316,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="87"/>
-        <Label x:Name="lblCourse" Content="Course being Studied" HorizontalAlignment="Left" Margin="24,402,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="124"/>
-        <Label x:Name="lblDept" Content="Department" HorizontalAlignment="Left" Margin="24,428,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="74"/>
-        <Label x:Name="lblStudyYear" Content="Year of Study" HorizontalAlignment="Left" Margin="24,454,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="79"/>
-        <Label x:Name="lblNationality" Content="Nationality" HorizontalAlignment="Left" Margin="24,342,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="68"/>
-        <Label x:Name="lblParentName" Content="Parents/Guardians Name" HorizontalAlignment="Left" Margin="24,506,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="142"/>
-        <Label x:Name="lblParentEmail" Content="Parents Email" HorizontalAlignment="Left" Margin="24,532,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="80"/>
-        <Label x:Name="lblParentTel" Content="Parents Phone Number" HorizontalAlignment="Left" Margin="24,558,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="133"/>
-        <Label x:Name="lblRoomType" Content="Room Type Required" HorizontalAlignment="Left" Margin="24,600,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="120"/>
-        <Label x:Name="lblAdditionalInfo" Content="Any Other Requirements" HorizontalAlignment="Left" Margin="24,631,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="140"/>
-        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="10,6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnSubmit_Click" Height="20" TabIndex="21"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="108,6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnCancel_Click" Height="20" TabIndex="22"/>
-        <TextBox x:Name="tbxFName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,3,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="0"/>
-        <TextBox x:Name="tbxSName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,28,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="1"/>
-        <TextBox x:Name="tbxMobile" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,54,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="2"/>
-        <TextBox x:Name="tbxEmail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,80,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="3"/>
-        <TextBox x:Name="tbxHomeAddr" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,108,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="4"/>
-        <TextBox x:Name="tbxHomeTown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,136,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="5"/>
-        <TextBox x:Name="tbxHomeCity" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,164,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="6"/>
-        <TextBox x:Name="tbxHomeCounty" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,192,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="7"/>
-        <TextBox x:Name="tbxHomeCountry" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,220,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="8"/>
-        <TextBox x:Name="tbxDOB" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,267,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="9"/>
+        <Label x:Name="lblHeader" Content="New User Regristration" HorizontalAlignment="Left" Margin="24,6,0,0" VerticalAlignment="Top" Height="27" Width="133" />
+        <Label x:Name="lblFName" Content="Forename" HorizontalAlignment="Left" Margin="24,40,0,0" VerticalAlignment="Top" Height="26" Grid.Row="1" Width="63"/>
+        <Label x:Name="lblSName" Content="Surname" HorizontalAlignment="Left" Margin="24,65,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="57"/>
+        <Label x:Name="lblMobile" Content="Mobile No." HorizontalAlignment="Left" Margin="24,91,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="69"/>
+        <Label x:Name="lblEmail" Content="Email" HorizontalAlignment="Left" Margin="24,117,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label x:Name="lblAddress" Content="Home Address" HorizontalAlignment="Left" Margin="24,145,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="87"/>
+        <Label x:Name="lblTown" Content="Town" HorizontalAlignment="Left" Margin="24,170,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label x:Name="lblCity" Content="City" HorizontalAlignment="Left" Margin="24,198,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="38"/>
+        <Label x:Name="lblCounty" Content="County" HorizontalAlignment="Left" Margin="24,226,0,0" Grid.Row="1" VerticalAlignment="Top" Height="26" Width="53"/>
+        <Button x:Name="btnSubmit" Content="Submit" HorizontalAlignment="Left" Margin="10,153,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnSubmit_Click" Height="20" TabIndex="11"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="120,153,0,0" Grid.Row="2" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnCancel_Click" Height="20" TabIndex="12"/>
+        <TextBox x:Name="tbxFName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,43,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="0"/>
+        <TextBox x:Name="tbxSName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,68,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="1"/>
+        <TextBox x:Name="tbxMobile" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TabIndex="2"/>
+        <TextBox x:Name="tbxEmail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,120,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="3"/>
+        <TextBox x:Name="tbxHomeAddr" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,148,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="4"/>
+        <TextBox x:Name="tbxHomeTown" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,173,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="5"/>
+        <TextBox x:Name="tbxHomeCity" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,201,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="6"/>
+        <TextBox x:Name="tbxHomeCounty" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,229,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="7"/>
+        <Label x:Name="lblUName" Content="Username" HorizontalAlignment="Left" Margin="24,42,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="87"/>
+        <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="24,73,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="77"/>
+        <Label x:Name="lblConfirmPassword" Content="Confirm Password" HorizontalAlignment="Left" Margin="24,104,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="133"/>
+        <TextBox x:Name="tbxNewUserUName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,42,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="8"/>
+        <PasswordBox x:Name="tbxNewUserPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="10,73,0,0" Grid.Row="2" VerticalAlignment="Top" Width="185" Height="23" TabIndex="9"/>
+        <PasswordBox x:Name="tbxNewUserConfirmPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="10,104,0,0" Grid.Row="2" Width="185" Height="22" VerticalAlignment="Top" TabIndex="10"/>
+        <Label x:Name="lblPersonalDetails" Content="Personal Details" FontStyle="Oblique" HorizontalAlignment="Left" Margin="24,10,0,0" Grid.Row="1" Width="157" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="lblLoginDetails" Content="Create Login Account" FontStyle="Oblique" HorizontalAlignment="Left" Margin="24,10,0,0" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="124"/>
+        <Separator HorizontalAlignment="Left" Height="8" Margin="10,31,0,0" VerticalAlignment="Top" Width="490" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <Separator HorizontalAlignment="Left" Height="10" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="490" Grid.ColumnSpan="2"/>
 
         <!--Gender Selections-->
-        <ComboBox x:Name="cboGender" Grid.Column="1" HorizontalAlignment="Left" Margin="10,295,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="cboGender_SelectionChanged" TabIndex="10">
-            <ComboBoxItem x:Name="cboiGender" Content="Male"/>
-            <ComboBoxItem x:Name="cboigender1" Content="Female"/>
-        </ComboBox>
 
         <!--Martial Status Selections-->
-        <ComboBox x:Name="cboMarriedStatus" Grid.Column="1" HorizontalAlignment="Left" Margin="10,320,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="cboMarriedStatus_SelectionChanged" TabIndex="11">
-            <ComboBoxItem x:Name="cboiMarried" Content="Select Status"/>
-            <ComboBoxItem x:Name="cboiMarried1" Content="Single"/>
-            <ComboBoxItem x:Name="cboiMarried2" Content="Married"/>
-            <ComboBoxItem x:Name="cboiMarried3" Content="Divorced"/>
-            <ComboBoxItem x:Name="cboiMarried4" Content="Separated"/>
-        </ComboBox>
-
-        <TextBox x:Name="tbxCourse" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,407,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="206" TabIndex="13"/>
 
         <!--Department Selections-->
-        <ComboBox x:Name="cboDept" Grid.Column="1" HorizontalAlignment="Left" Margin="10,432,0,0" Grid.Row="1" VerticalAlignment="Top" Width="206" Height="22" SelectionChanged="cboDept_SelectionChanged" TabIndex="14">
-            <ComboBoxItem x:Name="cboiDept" Content="College Departments"/>
-            <ComboBoxItem x:Name="cboiDept1" Content="Business Studies"/>
-            <ComboBoxItem x:Name="cboiDept2" Content="Law &amp; Humanities"/>
-            <ComboBoxItem x:Name="cboiDept3" Content="Design &amp; Creative Media"/>
-            <ComboBoxItem x:Name="cboiDept4" Content="Civil Engineering &amp; Construction"/>
-            <ComboBoxItem x:Name="cboiDept5" Content="Electronic &amp; Mechanical Engineering"/>
-            <ComboBoxItem x:Name="cboiDept6" Content="Computing"/>
-            <ComboBoxItem x:Name="cboiDept7" Content="Nursing &amp; Health Studies"/>
-            <ComboBoxItem x:Name="cboiDept8" Content="Science"/>
-            <ComboBoxItem x:Name="cboiDept9" Content="Gastronomy &amp; Culinary Arts"/>
-            <ComboBoxItem x:Name="cboiDept10" Content="Hospitality &amp; Tourism"/>
-        </ComboBox>
 
         <!--Course Year Selections-->
-        <ComboBox x:Name="cboCourseYear" Grid.Column="1" HorizontalAlignment="Left" Margin="10,459,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="cboCourseYear_SelectionChanged" TabIndex="15">
-            <ComboBoxItem x:Name="cboiYr" Content="College Year"/>
-            <ComboBoxItem x:Name="cboiYr1" Content="1st Year Degree"/>
-            <ComboBoxItem x:Name="cboiYr2" Content="2nd Year Degree"/>
-            <ComboBoxItem x:Name="cboiYr3" Content="3rd Year Degree"/>
-            <ComboBoxItem x:Name="cboiYr5" Content="UnderGrad Degree"/>
-            <ComboBoxItem x:Name="cboiYr6" Content="PostGrad Degree"/>
-        </ComboBox>
-
-        <TextBox x:Name="tbxNationality" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,347,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152" TabIndex="12"/>
-        <TextBox x:Name="tbxParentName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,506,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="16"/>
-        <TextBox x:Name="tbxParentEmail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,535,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="185" TabIndex="17"/>
-        <TextBox x:Name="tbxParentTel" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,561,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="152" TabIndex="18"/>
 
         <!--Room Type Selection-->
-        <ComboBox x:Name="cboRoomType" Grid.Column="1" HorizontalAlignment="Left" Margin="10,604,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" Height="22" SelectionChanged="cboRoomType_SelectionChanged" TabIndex="19">
-            <ComboBoxItem x:Name="cboiRm" Content="Available Types"/>
-            <ComboBoxItem x:Name="cboiSingleRm" Content="Single Room"/>
-            <ComboBoxItem x:Name="cboiDoubleRm" Content="Double Room"/>
-        </ComboBox>
-
-        <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Margin="24,0,74,10" Grid.Row="2">
-            <TextBlock x:Name="tbx" HorizontalAlignment="Left" Margin="29,493,-137,-505" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="285" Height="56" RenderTransformOrigin="0.492,1.66"/>
-        </Border>
     </Grid>
 </Window>

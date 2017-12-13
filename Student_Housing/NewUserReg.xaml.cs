@@ -19,11 +19,9 @@ namespace Student_Housing
     /// </summary>
     public partial class NewUserReg : Window
     {
-        string genderSelection = "";
-        string yearOfStudySelection = "";
-        string marriedStatusSelection = "";
-        string rmPreferenceSelection = "";
-        string deptSelection = "";
+        //create a new instance of database
+        dcarronHousingEntities2 db = new dcarronHousingEntities2();
+
 
         public NewUserReg()
         {
@@ -33,83 +31,94 @@ namespace Student_Housing
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            Environment.Exit(0);
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            string fname = "";
-            string sname = "";
-            string studentEmail = "";
-            string studentMobile = "";
-            string address = "";
-            string town = "";
-            string city = "";
-            string county = "";
-            string country = "";
-            string DOB = "";
-            string courseOfStudy="";
-            //string courseDepartment = "";
-            //string yearOfStudy = "";
-            string nationality = "";
-            string parentName = "";
-            string parentsEmail = "";
-            string parentsTele = "";
-            //string RoomPreference = "";
+            try
+            {
+                if (tbxNewUserPassword.Password == tbxNewUserConfirmPassword.Password)
+                {
+                    //add new user account for the details in the New User Registration
+                    mtdAddNewUserDetails();
 
-            fname = tbxFName.Text.Trim();
-            sname = tbxSName.Text.Trim();
-            studentEmail = tbxEmail.Text.Trim();
-            studentMobile = tbxMobile.Text.Trim();
-            address = tbxHomeAddr.Text.Trim();
-            town = tbxHomeTown.Text.Trim();
-            city = tbxHomeCity.Text.Trim();
-            county = tbxHomeCounty.Text.Trim();
-            DOB = tbxDOB.Text.Trim();
+                    //clear the details entered so that the New User Form is blank
+                    mtdClearUserDetails();
+                }
+            }
+            catch (Exception)
+            {
 
-            country = tbxHomeCountry.Text.Trim();
-            nationality = tbxNationality.Text.Trim();
-
-            courseOfStudy = tbxCourse.Text.Trim();
-            parentName = tbxParentName.Text.Trim();
-            parentsEmail = tbxParentEmail.Text.Trim();
-            parentsTele = tbxParentTel.Text.Trim();
-
-            
-
+                MessageBox.Show("The Passwords entered do not match");
+            }
         }
 
-        private void cboGender_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //method for adding the newly registered user to the user database
+        private void mtdAddNewUserDetails()
         {
-            int genderSelected = cboGender.SelectedIndex;
-            //string genderSelection = "";
-            
+            try
+            {
+                db.Configuration.AutoDetectChangesEnabled = false;
+                db.Configuration.ValidateOnSaveEnabled = false;
+                db.Entry(mtdGetNewUser()).State = System.Data.Entity.EntityState.Added;
+
+                db.SaveChanges();
+                db.Configuration.AutoDetectChangesEnabled = true;
+                db.Configuration.ValidateOnSaveEnabled = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("On Error occurred writing to the database");
+            }
         }
 
-        private void cboMarriedStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //method to get the user details from the new user registration page
+        private User mtdGetNewUser()
         {
-            int marriedStatus = cboMarriedStatus.SelectedIndex;
+            //create a new instance of the user database
+            User newRegisteredUser = new User();
+
+            string newRegisteredUserpassword = tbxNewUserPassword.Password;
+            string newRegisteredUserUName= tbxNewUserUName.Text.Trim().ToLower();
+
+            //gather the new registered user details from the new user registration form
+            //generate a unique userid for the new user using the Guid.NewGuid()
+            newRegisteredUser.UserID = Guid.NewGuid().ToString();
+            newRegisteredUser.Forename = tbxFName.Text.ToString();
+            newRegisteredUser.Surname = tbxSName.Text.Trim();
+            newRegisteredUser.Address = tbxHomeAddr.Text.Trim();
+            newRegisteredUser.Town = tbxHomeTown.Text.Trim();
+            newRegisteredUser.City = tbxHomeCity.Text.Trim();
+            newRegisteredUser.County = tbxHomeCounty.Text.Trim();
+            newRegisteredUser.MobileNum = tbxMobile.Text.Trim();
+            newRegisteredUser.Email = tbxEmail.Text.Trim();
+            newRegisteredUser.UName = newRegisteredUserUName;
+            newRegisteredUser.Password = newRegisteredUserpassword;
             
-            //string marriedStatusSelection = "";
-            
-            
+            //define the access level of the new registered user is set to a normal user
+            newRegisteredUser.AccessLevel = 1;
+
+            return newRegisteredUser;
+
         }
 
-        private void cboDept_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //method to clear the information from the new user registration form
+        private void mtdClearUserDetails()
         {
-            int deptChoice = cboDept.SelectedIndex;
-            //string deptSelection = "";
+            string tbxFName = "";
+            string tbxSName = "";
+            string tbxHomeAddr = "";
+            string tbxHomeTown = "";
+            string tbxHomeCity = "";
+            string tbxHomeCounty = "";
+            string tbxMobile = "";
+            string tbxEmail = "";
+            string tbxNewUserUName = "";
+            string tbxNewUserPassword = "";
+            string tbxNewUserConfirmPassword="";
+
         }
 
-        private void cboCourseYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int yearOfCourse = cboCourseYear.SelectedIndex;
-            //string yearOfStudySelection = "";
-        }
-
-        private void cboRoomType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int roomChoice = cboRoomType.SelectedIndex;
-            //string rmPreferenceSelection = "";
-        }
     }
 }
